@@ -5,6 +5,5 @@ export const useBoolean = (): [boolean, () => void, () => void] => {
 
   const setFalse = () => setActive(false);
   const setTrue = () => setActive(true);
-
   return [active, setFalse, setTrue];
 };
