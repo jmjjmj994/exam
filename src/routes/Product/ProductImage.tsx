@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react';
 import { checkUrlValid } from 'src/api/utilities/utilities';
 import './product.css';
 type ProductImageProps = {
-  media:
-    | {
-        url: string;
-        alt: string;
-      }[];
+  media: {
+    url: string;
+    alt: string;
+  }[];
 };
 
 export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
