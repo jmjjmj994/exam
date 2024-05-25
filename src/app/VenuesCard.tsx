@@ -16,6 +16,14 @@ const renderImage = (imageUrl: string, name: string | undefined) => {
   );
 };
 
+const handleEnterKey = ({ target, id }) => {
+  console.log(target, id);
+  /*  console.log(e, id);
+  if (e.key === 'Enter') {
+    console.log('clicked');
+  } */
+};
+
 export const VenuesCard: React.FC<VenueCardProps> = ({
   id,
   name,
@@ -43,7 +51,11 @@ export const VenuesCard: React.FC<VenueCardProps> = ({
 
   return (
     <article key={id} className="flex flex-col relative rounded-md">
-      <Link className="absolute w-full h-full" to={''}></Link>
+      <Link
+        to={''}
+        className="absolute w-full h-full"
+        onKeyDown={(e) => handleEnterKey({ target: e.target, id: id })}
+      ></Link>
       {isValidUrl
         ? media && media.length > 0
           ? renderImage(media[0].url, name)

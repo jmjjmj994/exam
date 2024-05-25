@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { easeInOut, motion } from 'framer-motion';
 import { useMediaMatch } from 'src/hooks/use-match-media.hook.tsx';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 import { NavbarList } from './NavbarList';
@@ -23,7 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({ active, onClick }) => {
       {isMobile ? (
         <motion.nav
           initial={{ x: '100%' }}
-          transition={{ opacity: 0.25 }}
+          transition={{
+            ease: 'linear',
+            duration: 0.2,
+          }}
           animate={{ x: active ? '0%' : '100%', opacity: active ? '1' : '0' }}
           className="  fixed right-0 top-0 w-full h-full z-[1] bg-custom-background_white"
         >

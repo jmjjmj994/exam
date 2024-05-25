@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
-type TogglerHook = [boolean, () => void];
+type TogglerHook = [boolean, () => void, () => void];
 
 export const useToggler = (): TogglerHook => {
-  const [toggle, setToggle] = useState(false);
-  const handleToggle = () => {
-    setToggle((previous) => !previous);
+  const [toggler, setToggler] = useState(false);
+  const handleToggler = () => {
+    setToggler((previous) => !previous);
   };
 
-  return [toggle, handleToggle];
+  const setTogglerFalse = () => {
+    setToggler(false);
+  };
+
+  return [toggler, handleToggler, setTogglerFalse];
 };

@@ -1,19 +1,29 @@
-export { capitalizeFirstLetter, getToken, checkUrlValid };
-
-const capitalizeFirstLetter = (str: string): string => {
+export const capitalizeFirstLetter = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-const getToken = () => {
+export const parseStorage = () => {
+  const user = JSON.parse(localStorage.getItem('user') || '');
+  return user;
+};
+
+export const getStorage = () => {
   const token = localStorage.getItem('token');
-  if (token) {
-    return token;
+  const user = localStorage.getItem('user');
+
+  if (token && user) {
+    return true;
   } else {
-    return '';
+    return false;
   }
 };
 
-const checkUrlValid = async (url: string) => {
+export const clearStorage = (callback: () => void) => {
+  localStorage.clear();
+  callback();
+};
+
+export const checkUrlValid = async (url: string) => {
   return fetch(url, { method: 'HEAD' })
     .then((res) => {
       const contentType = res.headers.get('Content-Type');

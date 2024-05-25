@@ -1,7 +1,13 @@
 import { UserCircle } from 'phosphor-react';
 
-export const User = () => (
-  <button>
-    <UserCircle size={25} />
-  </button>
-);
+type UserProps = {
+  onClick: () => void;
+};
+
+export const User: React.FC<UserProps> = ({ onClick }) => {
+  return (
+    <button onClick={() => onClick()}>
+      <UserCircle size={25} />
+    </button>
+  );
+};
