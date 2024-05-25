@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+type ErrorType = {
+  message:string
+}
+
 export const useApiError = () => {
   const [error, setError] = useState<string | null>(null);
 

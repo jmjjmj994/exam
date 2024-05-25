@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 type PrimaryButtonProps = {
   type: 'submit' | 'button';
-  children: string;
+  children: string | JSX.Element ;
   onClick?: () => void;
   width: string;
 };
