@@ -1,0 +1,4 @@
+.primary_hover__state:is(:hover, :focus, :active) {
+  background-color: hsl(259, 100%, 55%);
+  transition: 80ms ease-in-out;
+}
