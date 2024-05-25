@@ -210,6 +210,17 @@ body {
 .header-s,
 .main-s,
 .footer-s {
+  display: grid;
+  grid-template-areas: '. wrapper .';
+  grid-template-columns: 1rem 1fr 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .header-s,
+  .main-s,
+  .footer-s {
+    grid-template-columns: 9rem 1fr 9rem;
+  }
 }
 /* small space */
 

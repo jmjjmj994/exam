@@ -12,38 +12,49 @@ type ProductImageProps = {
 };
 
 export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
+  console.log(media);
   return (
-    <div className="rounded-md  bg-orange-50">
-      {media && media.length > 1 ? (
-        <div className="venue-2x2-grid bg-green-200">
-          {media.map((img, index) => (
-            <div className="bg-blue-500 py-4 w-full">
-              <img
-                className="object-cover w-full h-full aspect-auto"
-                key={index}
-                src={img.url}
-                alt={`image of ${img} venue`}
-              ></img>
-            </div>
-          ))}
-        </div>
-      ) : (
-        /*   <EmblaCarousel>
+    <div className="rounded-md bg-gray-50">
+      {media && media.length > 2 && (
+        <EmblaCarousel>
           {media.map((img, index) => (
             <img
-              className="embla_slide"
+              loading="lazy"
+              className="embla_slide object-cover w-full  aspect-auto max-w-[800px] max-h-[470px] rounded-md  shadow-overlay "
               key={index}
               src={img.url}
               alt={`image of ${img} venue`}
             ></img>
           ))}
-        </EmblaCarousel> */
-        <div className="container_bg py-4 px-4 rounded-md">
-          <img
-            className=" max-h-[600px] m-auto  object-contain aspect-auto rounded-md "
-            src={media?.[0]?.url ?? ''}
-            alt={`image of ${media?.[0]?.url} venue`}
-          ></img>
+        </EmblaCarousel>
+      )}
+
+      {media && media.length > 1 && media.length <= 2 && (
+        <div className="flex justify-between px-4 py-4">
+          {media.map((img, index) => (
+            <img
+              loading="lazy"
+              className="object-cover w-full  aspect-auto max-w-[800px] max-h-[500px] rounded-md bg-custom-background_white shadow-overlay p-1"
+              key={index}
+              src={img.url}
+              alt={`image of ${img} venue`}
+            ></img>
+          ))}
+        </div>
+      )}
+
+      {media && media.length === 1 && (
+        <div className="flex items-center justify-center py-4">
+          {' '}
+          {media.map((img, index) => (
+            <img
+              loading="lazy"
+              className="object-cover w-full  aspect-auto max-w-[800px] max-h-[500px] rounded-md bg-custom-background_white shadow-overlay p-1"
+              key={index}
+              src={img.url}
+              alt={`image of ${img} venue`}
+            ></img>
+          ))}
         </div>
       )}
     </div>

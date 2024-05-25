@@ -6,13 +6,17 @@
 
 .venue-2x2-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 35rem));
-  grid-auto-rows: 40rem;
+  justify-content: space-between;
+  align-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 30rem));
+  grid-auto-rows: minmax(10px, 30rem);
 }
 
 .embla {
   width: 100%;
   overflow: hidden;
+  /* padding-block: 10px;
+  padding-inline: 10px; */
 }
 .embla__container {
   display: flex;
@@ -21,7 +25,7 @@
 }
 
 .embla_slide {
-  flex: 0 0 50%;
+  flex: 0 0 75%;
   min-width: 0;
   max-width: 100%;
   object-fit: cover;
