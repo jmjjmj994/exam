@@ -4,7 +4,8 @@ import { checkUrlValid } from 'src/api/utilities/utilities';
 import { Star } from 'phosphor-react';
 import { VenueType } from 'src/api/validation/venue-schema';
 
-const renderImage = (imageUrl: string, name: string) => {
+type VenueCardProps = Partial<VenueType>;
+const renderImage = (imageUrl: string, name: string | undefined) => {
   return (
     <img
       loading="lazy"
@@ -15,7 +16,7 @@ const renderImage = (imageUrl: string, name: string) => {
   );
 };
 
-export const VenuesCard: React.FC<VenueType> = ({
+export const VenuesCard: React.FC<VenueCardProps> = ({
   id,
   name,
   media,
@@ -41,7 +42,7 @@ export const VenuesCard: React.FC<VenueType> = ({
   }, [media]);
 
   return (
-    <article className="flex flex-col relative rounded-md">
+    <article key={id} className="flex flex-col relative rounded-md">
       <Link className="absolute w-full h-full" to={''}></Link>
       {isValidUrl
         ? media && media.length > 0
@@ -58,7 +59,7 @@ export const VenuesCard: React.FC<VenueType> = ({
       <div className="min-h-[10vh]">
         <div className="flex justify-between items-center">
           {' '}
-          <p className="font-int-bold">
+          <p className="inter-semi-bold">
             {location?.city ? location.city : 'No city provided'}, {''}
             {location?.country ? location.country : 'No location provided'}
           </p>
@@ -68,8 +69,8 @@ export const VenuesCard: React.FC<VenueType> = ({
           </div>
         </div>
         <div>
-          <p className="font-int-light">Host: {owner?.name}</p>
-          <p className="font-int-bold"> ${price} night</p>
+          <p className="inter-light">Host: {owner?.name}</p>
+          <p className="inter-semi-bold"> ${price} night</p>
         </div>
       </div>
     </article>

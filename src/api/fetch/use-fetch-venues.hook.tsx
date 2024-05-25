@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { useEffect, useState } from 'react';
 import { useApiLoader } from '../hooks/use-api-loader.hook';
 import { useApiError } from '../hooks/use-api-error.hook';
@@ -57,5 +56,5 @@ export const useFetchVenues = (page: number) => {
     fetchData();
   }, [currentPage]);
 
-  return { data, isLoading, error, handleError};
+  return { data, isLoading, error, handleError };
 };
