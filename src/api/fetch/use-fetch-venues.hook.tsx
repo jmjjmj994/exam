@@ -41,10 +41,11 @@ export const useFetchVenues = (page: number) => {
         })
         .then((result) => {
           const { data, meta }: { data: VenuesType; meta: MetaType } = result;
-          const validateData = venuesSchema.safeParse(data);
-          const validateMeta = metaSchema.safeParse(meta);
-          if (validateData.success && validateMeta.success)
-            setData({ data: data, meta: meta });
+          const parsedData = venuesSchema.safeParse(data);
+          const parsedMeta = metaSchema.safeParse(meta);
+          if (!parsedData.success && !parsedMeta.success)
+            console.error(parsedData.error, parsedMeta.error);
+          setData({ data: data, meta: meta });
           clearError();
           handleIsLoading();
         })

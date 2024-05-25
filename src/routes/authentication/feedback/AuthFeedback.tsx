@@ -1,26 +1,17 @@
 import { Warning, CheckCircle } from 'phosphor-react';
 
-/*  {errors?.email ? (
-          <Feedback variant={'error'}>
-            The email value must be a valid stud.noroff.no email
-          </Feedback>
-        ) : (
-          <Feedback variant={'success'}>
-            The email value must be a valid stud.noroff.no email
-          </Feedback>
-        )} */
-export const RegisterFeedback = ({
+export const AuthFeedback = ({
   variant,
   children,
 }: {
   variant: string;
-  children: string;
+  children: string | JSX.Element | null;
 }) => {
   const formFeedback = () => {
     switch (variant) {
       case 'error':
         return (
-          <span className="text-red-500 flex items-center gap-2 text-sm md:text-base">
+          <span className="text-red-500 flex items-center gap-1 text-sm md:text-base">
             <Warning className="max-w-[1.5rem] w-full  hidden md:block text-xl" />
             {children}
           </span>
@@ -28,7 +19,7 @@ export const RegisterFeedback = ({
 
       case 'success':
         return (
-          <span className="text-green-700 flex items-center gap-2 text-sm md:text-base">
+          <span className="text-green-700 flex items-center gap-1 text-sm md:text-base">
             <CheckCircle className="max-w-[1.5rem] w-full  hidden md:block text-xl" />
             {children}
           </span>

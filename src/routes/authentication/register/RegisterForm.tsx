@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { options } from 'src/api/config/api-options';
-import { RegisterFeedback } from './RegisterFeedback';
+import { AuthFeedback } from '../feedback/AuthFeedback';
 import { useApiError } from 'src/api/hooks/use-api-error.hook';
-import { useApiLoader } from 'src/api/hooks/use-api-loader.hook';
 import { ButtonSpinner } from '../ui/Spinner';
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 export const RegisterForm = () => {
   const {
     register,
@@ -18,7 +17,6 @@ export const RegisterForm = () => {
   } = useForm<RegisterSchemaType>({ resolver: zodResolver(registerSchema) });
 
   const [error, handleError, clearError] = useApiError();
-  /* const [isLoading, setIsLoading] = useApiLoader(); */
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: RegisterSchemaType) => {
@@ -28,11 +26,8 @@ export const RegisterForm = () => {
       headers: options.headers,
       body: options.body(data),
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((results) => {
-        console.log(results);
         if (results.errors) {
           throw new Error(results.errors[0].message);
         }
@@ -94,44 +89,48 @@ export const RegisterForm = () => {
         />
       </div>
       <section className="flex flex-col gap-3 my-4  min-h-[14vh] py-2">
-        {error && (
-          <RegisterFeedback variant={'error'}>{error}</RegisterFeedback>
-        )}
+        {error && <AuthFeedback variant={'error'}>{error}</AuthFeedback>}
 
         {errors?.name ? (
-          <RegisterFeedback variant={'error'}>
+          <AuthFeedback variant={'error'}>
             The name must not contain punctuation symbols apart from underscore
-          </RegisterFeedback>
+          </AuthFeedback>
         ) : (
-          <RegisterFeedback variant={'success'}>
+          <AuthFeedback variant={'success'}>
             The name must not contain punctuation symbols apart from underscore
-          </RegisterFeedback>
+          </AuthFeedback>
         )}
 
         {errors?.email ? (
-          <RegisterFeedback variant={'error'}>
+          <AuthFeedback variant={'error'}>
             The email value must be a valid stud.noroff.no email
-          </RegisterFeedback>
+          </AuthFeedback>
         ) : (
-          <RegisterFeedback variant={'success'}>
+          <AuthFeedback variant={'success'}>
             The email value must be a valid stud.noroff.no email
-          </RegisterFeedback>
+          </AuthFeedback>
         )}
 
         {errors?.password ? (
-          <RegisterFeedback variant={'error'}>
+          <AuthFeedback variant={'error'}>
             The password value must be at least 8 characters
-          </RegisterFeedback>
+          </AuthFeedback>
         ) : (
-          <RegisterFeedback variant={'success'}>
+          <AuthFeedback variant={'success'}>
             The password value must be at least 8 characters
-          </RegisterFeedback>
+          </AuthFeedback>
         )}
       </section>
 
       <PrimaryButton type="submit" width="full">
         {loading ? <ButtonSpinner /> : 'Create account'}
       </PrimaryButton>
+      <span className="flex gap-2">
+        Already have an account?
+        <Link className="underline text-blue-600" to={'/sign-in'}>
+          Sign in
+        </Link>
+      </span>
     </form>
   );
 };
