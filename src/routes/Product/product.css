@@ -1,0 +1,32 @@
+.venue_images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.venue-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 35rem));
+  grid-auto-rows: 40rem;
+}
+
+.embla {
+  width: 100%;
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.embla_slide {
+  flex: 0 0 50%;
+  min-width: 0;
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: square;
+  margin-inline-end: 20px;
+  margin-inline-start: 10px;
+  max-height: 30rem;
+}

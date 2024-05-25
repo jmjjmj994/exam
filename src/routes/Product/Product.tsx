@@ -11,6 +11,7 @@ export const Product = () => {
       <Helmet>
         <title>product</title>
       </Helmet>
+
       <ProductImage media={data.media} />
     </div>
   );
