@@ -6,8 +6,10 @@ export const Layout = () => {
   return (
     <HelmetProvider>
       <Header />
-      <main>
-        <Outlet />
+      <main className="main main-l bg-custom-background">
+        <div className="element-wrapper">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </HelmetProvider>
