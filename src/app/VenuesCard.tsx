@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { checkUrlValid } from 'src/api/utilities/utilities';
 import { Star } from 'phosphor-react';
 import { VenueType } from 'src/api/validation/venue-schema';
@@ -16,14 +16,6 @@ const renderImage = (imageUrl: string, name: string | undefined) => {
   );
 };
 
-const handleEnterKey = ({ target, id }) => {
-  console.log(target, id);
-  /*  console.log(e, id);
-  if (e.key === 'Enter') {
-    console.log('clicked');
-  } */
-};
-
 export const VenuesCard: React.FC<VenueCardProps> = ({
   id,
   name,
@@ -33,6 +25,7 @@ export const VenuesCard: React.FC<VenueCardProps> = ({
   price,
   owner,
 }) => {
+  const navigate = useNavigate();
   const [isValidUrl, setIsValidUrl] = useState(true);
   useEffect(() => {
     const checkUrlValidity = async () => {
@@ -49,12 +42,14 @@ export const VenuesCard: React.FC<VenueCardProps> = ({
     checkUrlValidity();
   }, [media]);
 
+  const handleEnterKey = (id: string) => window.open(`/venue/${id}`, '_blank');
+
   return (
     <article key={id} className="flex flex-col relative rounded-md">
       <Link
         to={''}
         className="absolute w-full h-full"
-        onKeyDown={(e) => handleEnterKey({ target: e.target, id: id })}
+        onClick={() => handleEnterKey(id as string)}
       ></Link>
       {isValidUrl
         ? media && media.length > 0

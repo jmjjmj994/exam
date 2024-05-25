@@ -5,6 +5,7 @@ import { Layout } from './layout/Layout';
 import { App } from './app/App';
 import { Register } from './routes/authentication/register/Register';
 import { Login } from './routes/authentication/login/Login';
+import { Venue } from './layout/Venue/Venue';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'sign-in',
         element: <Login />,
+      },
+      {
+        path: '/venue/:id',
+        element: <Venue />,
       },
     ],
   },
