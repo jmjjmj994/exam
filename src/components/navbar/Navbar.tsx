@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { X } from 'phosphor-react';
 import { useMediaMatch } from 'src/hooks/use-match-media.hook.tsx';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 import { NavbarList } from './NavbarList';
@@ -37,17 +36,5 @@ export const Navbar: React.FC<NavbarProps> = ({ active, onClick }) => {
         </nav>
       )}
     </>
-    /*     <nav
-      className={`${isMobile}  bg-blue-500 fixed right-0 top-0 w-full h-full  md:static `}
-    >
-      <div>
-        <button onClick={onClick} type="button">
-          <X size={25} />
-        </button>
-      </div>
-      <ul className="h-full">
-        <NavigationLinks />
-      </ul>
-    </nav> */
   );
 };
