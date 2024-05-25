@@ -165,7 +165,15 @@ body {
 .footer-l {
   display: grid;
   grid-template-areas: '. wrapper .';
-  grid-template-columns: 10rem 1fr 10rem;
+  grid-template-columns: 1rem 1fr 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .header-l,
+  .main-l,
+  .footer-l {
+    grid-template-columns: 5rem 1fr 5rem;
+  }
 }
 
 /* large space */
@@ -178,7 +186,6 @@ body {
 /* small space */
 .element-wrapper {
   grid-area: wrapper;
-  height: 100%;
 }
 
 /* Spacing for elements inside header,main,footer */
