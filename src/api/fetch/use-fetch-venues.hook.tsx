@@ -18,7 +18,7 @@ const initialMeta = {
 
 export const useFetchVenues = (page: number) => {
   const [data, setData] = useState({
-    data: {} as VenuesType,
+    data: [] as VenuesType,
     meta: initialMeta as MetaType,
   });
   const [isLoading, handleIsLoading] = useApiLoader();
@@ -47,13 +47,15 @@ export const useFetchVenues = (page: number) => {
           if (validateData.success && validateMeta.success)
             setData({ data: data, meta: meta });
           clearError();
+          handleIsLoading();
         })
         .catch((err) => {
           console.log(err);
+          handleIsLoading();
         });
     };
     fetchData();
   }, [currentPage]);
 
-  return [data];
+  return { data, isLoading, error, handleError};
 };
