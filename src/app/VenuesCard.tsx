@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { checkUrlValid } from 'src/api/utilities/utilities';
 import { Star } from 'phosphor-react';
 import { VenueType } from 'src/api/validation/venue-schema';
@@ -25,7 +25,6 @@ export const VenuesCard: React.FC<VenueCardProps> = ({
   price,
   owner,
 }) => {
-  const navigate = useNavigate();
   const [isValidUrl, setIsValidUrl] = useState(true);
   useEffect(() => {
     const checkUrlValidity = async () => {

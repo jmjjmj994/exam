@@ -39,8 +39,8 @@ export const useFetchVenues = (page: number) => {
           }
           return response.json();
         })
-        .then((result) => {
-          const { data, meta }: { data: VenuesType; meta: MetaType } = result;
+        .then((results) => {
+          const { data, meta }: { data: VenuesType; meta: MetaType } = results;
           const parsedData = venuesSchema.safeParse(data);
           const parsedMeta = metaSchema.safeParse(meta);
           if (!parsedData.success && !parsedMeta.success)

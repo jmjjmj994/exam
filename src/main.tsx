@@ -5,7 +5,7 @@ import { Layout } from './layout/Layout';
 import { App } from './app/App';
 import { Register } from './routes/authentication/register/Register';
 import { Login } from './routes/authentication/login/Login';
-import { Venue } from './layout/Venue/Venue';
+import { Product } from './routes/Product/Product';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/venue/:id',
-        element: <Venue />,
+        element: <Product />,
       },
     ],
   },
