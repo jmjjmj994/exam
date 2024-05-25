@@ -6,7 +6,7 @@ type UserProps = {
 
 export const User: React.FC<UserProps> = ({ onClick }) => {
   return (
-    <button onClick={() => onClick()}>
+    <button role="button" aria-haspopup="menu" onClick={() => onClick()}>
       <UserCircle size={25} />
     </button>
   );
