@@ -7,7 +7,8 @@ import { AuthFeedback } from '../feedback/AuthFeedback';
 import { useApiError } from 'src/api/hooks/use-api-error.hook';
 import { ButtonSpinner } from '../ui/Spinner';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { directLogin } from './redirectLogin';
+import { Link, useNavigate } from 'react-router-dom';
 export const RegisterForm = () => {
   const {
     register,
@@ -18,6 +19,7 @@ export const RegisterForm = () => {
 
   const [error, handleError, clearError] = useApiError();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (data: RegisterSchemaType) => {
     setLoading(true);
@@ -32,13 +34,19 @@ export const RegisterForm = () => {
           throw new Error(results.errors[0].message);
         }
         clearError();
-        setLoading(false);
+        return directLogin({ email: data.email, password: data.password });
+      })
+      .then(() => {
+        reset();
+        navigate('/');
       })
       .catch((error) => {
-        setLoading(false);
         const errorMessage =
           error instanceof Error ? error.message : 'Profile already exists';
         handleError(errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -125,9 +133,9 @@ export const RegisterForm = () => {
       <PrimaryButton type="submit" width="full">
         {loading ? <ButtonSpinner /> : 'Create account'}
       </PrimaryButton>
-      <span className="flex gap-2">
+      <span className="flex gap-2  text-sm md:text-base">
         Already have an account?
-        <Link className="underline text-blue-600" to={'/sign-in'}>
+        <Link className="underline text-blue-600 " to={'/sign-in'}>
           Sign in
         </Link>
       </span>

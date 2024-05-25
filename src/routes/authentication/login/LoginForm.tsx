@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 import { ButtonSpinner } from '../ui/Spinner';
+import { Link } from 'react-router-dom';
 import {
   loginSchema,
   LoginSchemaType,
@@ -115,6 +116,13 @@ export const LoginForm = () => {
       <PrimaryButton type="submit" width="full">
         {loading ? <ButtonSpinner /> : 'Sign in'}
       </PrimaryButton>
+
+      <span className="flex gap-2  text-sm md:text-base">
+        Don't have an account yet?
+        <Link className="underline text-blue-600 " to={'/register'}>
+          Create one
+        </Link>
+      </span>
     </form>
   );
 };
