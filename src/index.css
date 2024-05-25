@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+@layer base {
+  :root {
+    --background: 0, 0%, 99%;
+    --background_white: 0, 0%, 100%;
+    --primary: 259, 100%, 60%;
+    --textStrong: 258, 18%, 24%;
+    --textWeak: 258, 10%, 47%;
+    --strokeStrong: 258, 23%, 71%;
+    --strokeWeak: 257, 59%, 83%;
+    --fill: 258, 100%, 98%;
+
+    --specialPrimary: 116, 41, 255, 1;
+    --specialFill: 116, 41, 255, 0.1;
+    --specialStrokeStrong: 116, 41, 255, 0.2;
+
+    --errorPrimary: 199, 58, 58, 1;
+    --errorFill: 199, 58, 58, 0.1;
+    --errorStrokeStrong: 199, 58, 58, 0.2;
+    --warningPrimary: 143, 108, 26, 1;
+    --warningFill: 143, 108, 26, 0.1;
+    --warningStrokeStrong: 143, 108, 26, 0.2;
+    --successPrimary: 6, 122, 88, 1;
+    --successFill: 6, 122, 88, 0.1;
+    --successStrokeStrong: 6, 122, 88, 0.2;
+    --bgRaised: 255, 255, 255, 1;
+    --bgOverlay: 255, 255, 255, 1;
+    --raised: 0px 9px 12px -12px rgb(0, 0, 0);
+    --overlay: 0 10px 10px 5px rgb(0 0 0 / 0.1),
+      0 2px 10px -2px rgb(0 0 0 / 0.1);
+
+    /* dashboard */
+    --d-bgDashboard: 0, 0%, 98%;
+    --d-secondaryDashboard: rgb(238, 236, 236);
+    --d-border--clr: 0, 0%, 90%;
+    --d-primary: 259, 100%, 60%;
+    --d-textStrong: 258, 18%, 24%;
+    --d-textWeak: 258, 10%, 47%;
+    --d-strokeStrong: 258, 23%, 71%;
+    --d-strokeWeak: 257, 59%, 83%;
+    --d-fill: 258, 100%, 98%;
+    --d-specialPrimary: 116, 41, 255, 1;
+    --d-specialFill: 116, 41, 255, 0.1;
+    --d-specialStrokeStrong: 116, 41, 255, 0.2;
+    --d-errorPrimary: 199, 58, 58, 1;
+    --d-errorFill: 199, 58, 58, 0.1;
+    --d-errorStrokeStrong: 199, 58, 58, 0.2;
+    --d-warningPrimary: 143, 108, 26, 1;
+    --d-warningFill: 143, 108, 26, 0.1;
+    --d-warningStrokeStrong: 143, 108, 26, 0.2;
+    --d-successPrimary: 6, 122, 88, 1;
+    --d-successFill: 6, 122, 88, 0.1;
+    --d-successStrokeStrong: 6, 122, 88, 0.2;
+    --d-bgRaised: 255, 255, 255, 1;
+    --d-bgOverlay: 255, 255, 255, 1;
+    --d-raised: 0px 9px 12px -12px rgb(0, 0, 0);
+    --d-overlay: 0px 9px 17px -12px rgb(0, 0, 0);
+    /* dashboard */
+  }
+  :root[data-theme='dark'] {
+    --d-bgDashboard: 0, 0%, 6%;
+    --d-secondaryDashboard: rgba(30, 31, 34, 0.43);
+    --d-border--clr: 0, 0%, 3%;
+    --d-primary: 259, 100%, 65%;
+    --d-textStrong: 0, 0%, 100%;
+    --d-textWeak: 230, 32%, 93%;
+    --d-strokeStrong: 228, 8%, 23%;
+    --d-strokeWeak: 231, 8%, 32%;
+    --d-fill: 231, 10%, 14%;
+    --d-errorPrimary: 255, 156, 156, 1;
+    --d-errorFill: 255, 156, 156, 0.05;
+    --d-errorStrokeStrong: 255, 156, 156, 0.2;
+    --d-warningPrimary: 224, 191, 112, 1;
+    --d-warningFill: 224, 191, 112, 0.1;
+    --d-warningStrokeStrong: 224, 191, 112, 0.2;
+    --d-successPrimary: 119, 199, 176, 1;
+    --d-successFill: 119, 199, 176, 0.1;
+    --d-successStrokeStrong: 119, 199, 176, 0.2;
+    --d-bgRaised: 38, 38, 38, 1;
+    --d-bgOverlay: 51, 51, 51, 1;
+  }
+}
+
+/* fonts */
+.inter-font {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'slnt' 0;
+}
+
+.inter-semi {
+  font-weight: 350;
+}
+
+.inter-light {
+  font-weight: 300;
+}
+.inter-lighter {
+  font-weight: 200;
+}
+/* fonts */
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 5rem 1fr auto;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: orange;
+}
+
+main {
+  background-color: green;
+}
+.footer {
+  background-color: blue;
+}
