@@ -5,7 +5,7 @@ import { Layout } from './layout/Layout';
 import { App } from './app/App';
 import { Register } from './routes/authentication/register/Register';
 import { Login } from './routes/authentication/login/Login';
-import { Product } from './routes/Product/Product';
+import { Product } from './routes/product/Product';
 import './index.css';
 
 const router = createBrowserRouter([

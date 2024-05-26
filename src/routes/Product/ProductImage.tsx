@@ -11,7 +11,6 @@ type ProductImageProps = {
 };
 
 export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
-  console.log(media);
   return (
     <div className="rounded-md bg-gray-50">
       {media && media.length > 2 && (
