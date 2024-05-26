@@ -11,7 +11,6 @@ type ProductAmenitiesProps = {
 export const ProductAmenities: React.FC<ProductAmenitiesProps> = ({
   meta: { wifi, parking, pets, breakfast },
 }) => {
-  console.log(wifi, parking, pets, breakfast, 'Meta tags');
   return (
     <article className="bg-orange-200 text-sm">
       <h4 className="text-xl">Venue amenities</h4>

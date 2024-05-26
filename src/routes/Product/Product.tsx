@@ -6,6 +6,7 @@ import { ProductDescription } from './ProductDescription';
 import { ProductAmenities } from './ProductAmenities';
 import { ProductLocation } from './ProductLocation';
 import { ProductDetails } from './ProductDetails';
+import { ProductForm } from './ProductForm';
 import { Helmet } from 'react-helmet-async';
 import { Spinner } from 'src/api/ui/Spinner';
 import './product.css';
@@ -13,7 +14,7 @@ export const Product = () => {
   const { id } = useParams();
   const [data, isLoading] = useFetchVenue(id);
   const isData = Object.values(data).length > 0;
-  console.log(data);
+  console.log(data.bookings);
   return (
     <div className="relative ">
       <Helmet>
@@ -23,10 +24,10 @@ export const Product = () => {
       {isData && !isLoading && (
         <>
           <ProductImage media={data.media} />
-          <section className="max-w-[40rem] flex flex-col gap-4">
-            <ProductOwner avatar={data.owner.avatar} name={data.name} />
-            <ProductDescription description={data.description} />
-            <section className="product-grid">
+          <section className=" flex  items-center gap-4">
+            <section className="product-grid bg-red-300 w-[50%]">
+              <ProductOwner avatar={data.owner.avatar} name={data.name} />
+              <ProductDescription description={data.description} />
               <ProductDetails
                 bookings={data._count.bookings}
                 created={data.created}
@@ -36,6 +37,11 @@ export const Product = () => {
               <ProductLocation location={data.location} />
               <ProductAmenities meta={data.meta} />
             </section>
+            <ProductForm
+              id={data.id}
+              bookings={data.bookings}
+              price={data.price}
+            />
           </section>
         </>
       )}

@@ -12,7 +12,6 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
   maxGuests,
   rating,
 }) => {
-  console.log(bookings);
   const formattedDate = formatISO(new Date(created), {
     representation: 'date',
   });

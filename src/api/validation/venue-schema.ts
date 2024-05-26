@@ -75,4 +75,32 @@ export const venueSchema = z.object({
     .optional(),
 });
 
+
+
+const bookingsSchema = z
+.array(
+  z.object({
+    id: z.string(),
+    dateFrom: z.string(),
+    dateTo: z.string(),
+    guests: z.number(),
+    created: z.string(),
+    updated: z.string(),
+    customer: z.object({
+      name: z.string(),
+      email: z.string(),
+      bio: z.string().nullable().default(null),
+      avatar: z.object({
+        url: z.string().default(''),
+        alt: z.string().default(''),
+      }),
+      banner: z.object({
+        url: z.string().default(''),
+        alt: z.string().default(''),
+      }),
+    }),
+  })
+).default([])
+
+export type BookingsType = z.infer <typeof bookingsSchema> 
 export type VenueType = z.infer<typeof venueSchema>;
