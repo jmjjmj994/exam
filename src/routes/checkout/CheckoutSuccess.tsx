@@ -1,4 +1,3 @@
-import { Checks } from 'phosphor-react';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { useNavigate } from 'react-router-dom';
 import { useFormStep } from 'src/state/useStore';
@@ -12,9 +11,6 @@ export const CheckoutSuccess = () => {
   };
   return (
     <div className="max-w-[50rem]  shadow-overlay bg-custom-background_white w-full rounded-sm pt-20 pb-10  flex items-center flex-col gap-4">
-      {/*    <div className="rounded-full px-4 py-4 bg-custom-strokeWeak">
-        <Checks className="text-[120px] " />
-      </div> */}
       <h1 className="text-2xl font-bold mb-4">Booking Successful!</h1>
       <div className="inter-light">
         <p className="inter-bold">Next steps:</p>

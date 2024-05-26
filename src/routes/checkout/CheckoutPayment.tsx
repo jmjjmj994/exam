@@ -1,5 +1,4 @@
 import { useFormStep, useFormData } from 'src/state/useStore';
-import { IdentificationCard } from 'phosphor-react';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { options } from 'src/api/config/api-options';
 export const CheckoutPayment = () => {

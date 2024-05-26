@@ -2,7 +2,6 @@ import { MapPin, Star, Globe } from 'phosphor-react';
 import { useParams } from 'react-router-dom';
 import { formatISO } from 'date-fns';
 import { useFormStep, useFormData } from 'src/state/useStore';
-import { ChangeEvent, FormEventHandler } from 'react';
 export const CheckoutForm = () => {
   const {
     venueId,
