@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BookingsType } from 'src/api/validation/venue-schema';
+import { BookingsType, LocationType } from 'src/api/validation/venue-schema';
 import { useNavigate } from 'react-router-dom';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 import { X } from 'phosphor-react';
@@ -13,6 +13,7 @@ type ProductFormProps = {
   active: boolean;
   onClick: () => void;
   image: string;
+  location: LocationType;
 };
 
 import { ProductCalendar } from './ProdutCalendar';
@@ -27,6 +28,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   maxGuests,
   isMobile,
   active,
+  location: { city, address, country },
   onClick,
 }) => {
   const pricePerDay = price;
@@ -80,7 +82,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       navigate(
         `/checkout/${id}/${bookingDate.from.toISOString()}/${bookingDate.to.toISOString()}/${guests}/${bookingPrice}/${name}/${encodeURIComponent(
           image
-        )}`
+        )}/${city}/${country}/${address}`
       );
     } else {
       console.log('not ready');

@@ -59,6 +59,8 @@ export const Product = () => {
               maxGuests={data.maxGuests}
               name={data.name}
               image={data.media[0].url}
+              location={data.location}
+
             />
 
             <button

@@ -75,32 +75,44 @@ export const venueSchema = z.object({
     .optional(),
 });
 
-
-
 const bookingsSchema = z
-.array(
-  z.object({
-    id: z.string(),
-    dateFrom: z.string(),
-    dateTo: z.string(),
-    guests: z.number(),
-    created: z.string(),
-    updated: z.string(),
-    customer: z.object({
-      name: z.string(),
-      email: z.string(),
-      bio: z.string().nullable().default(null),
-      avatar: z.object({
-        url: z.string().default(''),
-        alt: z.string().default(''),
+  .array(
+    z.object({
+      id: z.string(),
+      dateFrom: z.string(),
+      dateTo: z.string(),
+      guests: z.number(),
+      created: z.string(),
+      updated: z.string(),
+      customer: z.object({
+        name: z.string(),
+        email: z.string(),
+        bio: z.string().nullable().default(null),
+        avatar: z.object({
+          url: z.string().default(''),
+          alt: z.string().default(''),
+        }),
+        banner: z.object({
+          url: z.string().default(''),
+          alt: z.string().default(''),
+        }),
       }),
-      banner: z.object({
-        url: z.string().default(''),
-        alt: z.string().default(''),
-      }),
-    }),
-  })
-).default([])
+    })
+  )
+  .default([]);
 
-export type BookingsType = z.infer <typeof bookingsSchema> 
+export const locationSchema = z
+  .object({
+    address: z.string().nullable().default(null),
+    city: z.string().nullable().default(null),
+    zip: z.string().nullable().default(null),
+    country: z.string().nullable().default(null),
+    continent: z.string().nullable().default(null),
+    lat: z.number().default(0).nullable(),
+    lng: z.number().default(0).nullable(),
+  })
+  .optional();
+
+export type LocationType = z.infer<typeof locationSchema>;
+export type BookingsType = z.infer<typeof bookingsSchema>;
 export type VenueType = z.infer<typeof venueSchema>;

@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '/checkout/:id/:dateFrom/:dateTo/:guests/:price/:name/:image',
+        path: '/checkout/:id/:dateFrom/:dateTo/:guests/:price/:name/:image/:city/:country/:address',
         element: <Checkout />,
       },
     ],
