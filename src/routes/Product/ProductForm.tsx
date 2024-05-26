@@ -1,22 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { setDate } from 'date-fns';
 import { BookingsType } from 'src/api/validation/venue-schema';
-
+import { useNavigate } from 'react-router-dom';
+import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
+import { X } from 'phosphor-react';
 type ProductFormProps = {
   id: string;
   bookings: BookingsType;
   price: number;
   maxGuests: number;
+  isMobile: boolean;
+  active: boolean;
+  onClick: () => void;
 };
 
 import { ProductCalendar } from './ProdutCalendar';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
+import { createPortal } from 'react-dom';
 export const ProductForm: React.FC<ProductFormProps> = ({
   id,
   bookings,
   price,
   maxGuests,
+  isMobile,
+  active,
+  onClick,
 }) => {
+  console.log(onClick);
   const pricePerDay = price;
   const [guests, setGuests] = useState(1);
   const [bookingPrice, setBookingPrice] = useState(price);
@@ -27,11 +37,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     from: null,
     to: null,
   });
+  const navigate = useNavigate();
 
-  const handleBookingDates = (
-    dates: { from: Date | null; to: Date | null },
-    flag: boolean
-  ) => {
+  const handleBookingDates = (dates: {
+    from: Date | null;
+    to: Date | null;
+  }) => {
     setBookingDate(dates);
     console.log(dates, 'data in booking func');
   };
@@ -62,22 +73,52 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   };
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
+    console.log(guests);
     if (bookingDate.from && bookingDate.to) {
-      console.log('ready');
+      /*   navigate(
+        `/checkout/${id}/${bookingDate.from.toISOString()}/${bookingDate.to.toISOString()}/${guests}/${bookingPrice}/${name}/${encodeURIComponent(
+          image
+        )}`
+      ); */
     } else {
       console.log('not ready');
     }
   };
 
-  return (
-    <section className="flex-col  shadow-raised rounded-md max-w-[40%] w-full self-start px-4 pt-2 pb-4">
+  useKeyEscape(onClick);
+
+  const productForm = (
+    <section
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dialog-title"
+      className={`${
+        isMobile
+          ? 'fixed inset-0 rounded-none   bg-orange-500'
+          : 'max-w-[40%] static'
+      }   
+      ${
+        isMobile
+          ? active
+            ? 'translate-y-0 transition-all ease-out'
+            : 'translate-y-full transition-all ease-out'
+          : null
+      }
+      flex-col  shadow-raised rounded-md w-full self-start px-4 pt-2 pb-4 `}
+    >
+      <button
+        className="md:hidden"
+        onClick={onClick}
+        aria-label="close modal"
+        type="button"
+      >
+        <X size={25} aria-label="close icon" />
+      </button>
       <form onSubmit={onSubmit} className="flex flex-col gap-4">
         <ProductCalendar
           handleBookingDates={handleBookingDates}
           bookings={bookings}
         />
-
         <fieldset className="max-w-[70%] mb-4 border border-custom-strokeWeak rounded-md px-2 py-2">
           <legend className="font-int-bold leading-10">Guests:</legend>
           <select
@@ -92,13 +133,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             ))}
           </select>
         </fieldset>
-        <article className="border border-custom-strokeWeak rounded-md px-2 py-2 ">
+        {/*   <article className="border border-custom-strokeWeak rounded-md px-2 py-2 ">
           <p>Pricing breakdown</p>
-
           <span className="inline-flex w-full justify-between border-b-1">
             Price per night <span>${price}</span>
           </span>
-
           <span className="inline-flex w-full justify-between border-b-1">
             Cleaning fee <span>$0.00</span>
           </span>
@@ -108,11 +147,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           <span className="inline-flex w-full justify-between border-b-1">
             Total after taxes <span>$0.00</span>
           </span>
-        </article>
+        </article> */}
         <PrimaryButton width="auto" type="submit">
           Confirm order
         </PrimaryButton>
       </form>
     </section>
   );
+
+  return isMobile
+    ? createPortal(
+        productForm,
+        document.getElementById('portal') as HTMLDivElement
+      )
+    : productForm;
 };

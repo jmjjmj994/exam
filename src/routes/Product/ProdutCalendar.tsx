@@ -3,8 +3,8 @@ import { BookingsType } from 'src/api/validation/venue-schema';
 import { useEffect, useState } from 'react';
 import { format, isAfter, isBefore, startOfMonth } from 'date-fns';
 import { DayPicker, DateRange } from 'react-day-picker';
-import { Door, DoorOpen } from 'phosphor-react';
-
+/* import { Door, DoorOpen } from 'phosphor-react';
+ */
 type ProductCalendarProps = {
   bookings: BookingsType;
   handleBookingDates: (arg, flag) => void;
