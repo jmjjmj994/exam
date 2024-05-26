@@ -61,7 +61,6 @@ export const LoginForm = () => {
       });
   };
 
-  console.log(error);
   return (
     <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="auth-form--container">

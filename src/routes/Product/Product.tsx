@@ -15,12 +15,11 @@ import './product.css';
 import { useEffect } from 'react';
 export const Product = () => {
   const { id } = useParams();
-
   const [data, isLoading] = useFetchVenue(id);
   const isData = Object.values(data).length > 0;
   const [active, setFalse, setTrue] = useBoolean();
   const [isMobile] = useMediaMatch('768');
-
+  console.log(data);
   useEffect(() => {
     if (!isMobile) setFalse();
   }, [isMobile]);
@@ -39,7 +38,7 @@ export const Product = () => {
             } flex items-center gap-4`}
           >
             <section className={`${isMobile && 'w-full'} bg-red-300 w-[50%]`}>
-              <ProductOwner avatar={data.owner.avatar} name={data.name} />
+              <ProductOwner avatar={data.owner.avatar} name={data.owner.name} />
               <ProductDescription description={data.description} />
               <ProductDetails
                 bookings={data._count.bookings}
@@ -58,6 +57,8 @@ export const Product = () => {
               bookings={data.bookings}
               price={data.price}
               maxGuests={data.maxGuests}
+              name={data.name}
+              image={data.media[0].url}
             />
 
             <button

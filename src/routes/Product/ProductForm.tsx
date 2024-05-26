@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { setDate } from 'date-fns';
+import { useEffect, useState } from 'react';
 import { BookingsType } from 'src/api/validation/venue-schema';
 import { useNavigate } from 'react-router-dom';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 import { X } from 'phosphor-react';
 type ProductFormProps = {
   id: string;
+  name: string;
   bookings: BookingsType;
   price: number;
   maxGuests: number;
   isMobile: boolean;
   active: boolean;
   onClick: () => void;
+  image: string;
 };
 
 import { ProductCalendar } from './ProdutCalendar';
@@ -19,6 +20,8 @@ import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { createPortal } from 'react-dom';
 export const ProductForm: React.FC<ProductFormProps> = ({
   id,
+  name,
+  image,
   bookings,
   price,
   maxGuests,
@@ -26,7 +29,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   active,
   onClick,
 }) => {
-  console.log(onClick);
   const pricePerDay = price;
   const [guests, setGuests] = useState(1);
   const [bookingPrice, setBookingPrice] = useState(price);
@@ -75,11 +77,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     e.preventDefault();
     console.log(guests);
     if (bookingDate.from && bookingDate.to) {
-      /*   navigate(
+      navigate(
         `/checkout/${id}/${bookingDate.from.toISOString()}/${bookingDate.to.toISOString()}/${guests}/${bookingPrice}/${name}/${encodeURIComponent(
           image
         )}`
-      ); */
+      );
     } else {
       console.log('not ready');
     }
