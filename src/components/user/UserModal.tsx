@@ -1,5 +1,5 @@
 import { User, SignOut, SignIn, UserPlus } from 'phosphor-react';
-import { RefObject, useEffect } from 'react';
+import { RefObject } from 'react';
 import { Link } from 'react-router-dom';
 import { getStorage, clearStorage } from 'src/api/utilities/utilities';
 import { useClickOutside } from 'src/hooks/use-click-outside.hook';
@@ -28,7 +28,6 @@ export const UserModal: React.FC<UserModalProps> = ({
   );
   useKeyEscape(onClick.handleToggler);
 
-
   return (
     <nav
       aria-label="user Navigation"
@@ -46,7 +45,9 @@ export const UserModal: React.FC<UserModalProps> = ({
             <>
               <li className="flex items-center gap-4 mb-4 px-4 py-4">
                 <User aria-label="profile" size={25} />
-                <Link to={''}>My profile</Link>
+                <Link onClick={() => onClick.setTogglerFalse()} to={'/profile'}>
+                  My profile
+                </Link>
               </li>
               <hr />
             </>
@@ -62,7 +63,8 @@ export const UserModal: React.FC<UserModalProps> = ({
                 <SignOut aria-label="sign out" size={25} />
                 <Link
                   onClick={() => {
-                    clearStorage(handleForceRenderKey), onClick.setTogglerFalse;
+                    clearStorage(handleForceRenderKey),
+                      onClick.setTogglerFalse();
                   }}
                   to={'/'}
                 >
@@ -72,7 +74,7 @@ export const UserModal: React.FC<UserModalProps> = ({
             ) : (
               <>
                 <SignIn aria-label="sign in" size={25} />
-                <Link onClick={() => onClick.setTogglerFalse} to={'/sign-in'}>
+                <Link onClick={() => onClick.setTogglerFalse()} to={'/sign-in'}>
                   Sign in
                 </Link>
               </>

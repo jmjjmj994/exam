@@ -7,6 +7,7 @@ import { Register } from './routes/authentication/register/Register';
 import { Login } from './routes/authentication/login/Login';
 import { Product } from './routes/product/Product';
 import { Checkout } from './routes/checkout/Checkout';
+import { Profile } from './routes/Profile/Profile';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/checkout/:venueId/:dateStart/:dateEnd/:visitors/:price/:name/:image/:city/:country/:address',
         element: <Checkout />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },
