@@ -1,5 +1,5 @@
 import { Star, Calendar, UsersThree, Crown } from 'phosphor-react';
-
+import { formatISO } from 'date-fns';
 type ProductDetailsProps = {
   bookings: number;
   created: string;
@@ -13,18 +13,27 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
   rating,
 }) => {
   console.log(bookings);
+  const formattedDate = formatISO(new Date(created), {
+    representation: 'date',
+  });
   return (
-    <article>
-      <h1>Venue details</h1>
-      {bookings > 30 && <p>This is a popular venue</p>}
+    <article className="text-sm bg-orange-300">
+      <h2 className="text-xl">Venue details</h2>
+      {bookings > 30 && <p>Popular venue</p>}
 
       <div>
         <div>
-          <Calendar />
-          <p>This venue was listed at: {created}</p>
+          <Calendar size={25} />
+          <p>Listed on: {formattedDate}</p>
         </div>
-        <p>This venue has a maximal guests count of: {maxGuests}</p>
-        <p>This venue has a rating of: {rating}</p>
+        <div>
+          <UsersThree size={25} />
+          <p>Max guests: {maxGuests}</p>
+        </div>
+        <div>
+          <Star size={25} />
+          <p>Rating: {rating}</p>
+        </div>
       </div>
     </article>
   );

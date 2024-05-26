@@ -13,8 +13,8 @@ export const ProductAmenities: React.FC<ProductAmenitiesProps> = ({
 }) => {
   console.log(wifi, parking, pets, breakfast, 'Meta tags');
   return (
-    <article className="bg-orange-200">
-      <h1>Venue amenities</h1>
+    <article className="bg-orange-200 text-sm">
+      <h4 className="text-xl">Venue amenities</h4>
 
       {!wifi && !parking && !pets && !breakfast && (
         <p>This venue does not offer any amenities.</p>
@@ -22,26 +22,26 @@ export const ProductAmenities: React.FC<ProductAmenitiesProps> = ({
 
       {wifi && (
         <div>
-          <WifiHigh />
-          <p className="inter-light text-xs">Wifi access available</p>
+          <WifiHigh size={25} />
+          <p>Wifi access available</p>
         </div>
       )}
       {pets && (
         <div>
-          <PawPrint />
-          <p className="inter-light text-md">Pets allowed</p>
+          <PawPrint size={25} />
+          <p>Pets allowed</p>
         </div>
       )}
       {parking && (
         <div>
-          <Pizza />
-          <p className="inter-light text-md">Breakfast included</p>
+          <Pizza size={25} />
+          <p>Breakfast included</p>
         </div>
       )}
       {breakfast && (
         <div>
-          <Car />
-          <p className="inter-light text-md">On-site parking available</p>
+          <Car size={25} />
+          <p>On-site parking available</p>
         </div>
       )}
     </article>

@@ -12,6 +12,13 @@
   grid-auto-rows: minmax(10px, 30rem);
 }
 
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 10rem));
+  grid-template-rows: max-content;
+  gap: 10px;
+}
+
 .embla {
   width: 100%;
   overflow: hidden;

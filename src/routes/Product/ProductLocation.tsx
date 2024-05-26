@@ -14,26 +14,30 @@ type PartialProductionLocationProps = Partial<ProductLocationProps>;
 export const ProductLocation: React.FC<PartialProductionLocationProps> = ({
   location: { address, city, country } = {},
 }) => (
-  <article>
-    <h1>Where to find it</h1>
-    <p>
-      <MapPin /> {address}
-    </p>
-    <p>
+  <article className="text-sm">
+    <h3 className="text-xl">Location information</h3>
+
+    <div>
+      <MapPin size={25} />
+      <p>{address}</p>
+    </div>
+
+    <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
+        width="25"
+        height="25"
         fill="#000000"
         viewBox="0 0 256 256"
       >
         <path d="M240,208h-8V88a8,8,0,0,0-8-8H160a8,8,0,0,0-8,8v40H104V40a8,8,0,0,0-8-8H32a8,8,0,0,0-8,8V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM168,96h48V208H168Zm-16,48v64H104V144ZM40,48H88V208H40ZM72,72V88a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Zm0,48v16a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm0,48v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm48,16V168a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Zm64,0V168a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Zm0-48V120a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Z"></path>
-      </svg>{' '}
-      {''}
-      {city}
-    </p>
-    <p>
-      <Globe /> {country}
-    </p>
+      </svg>
+      <p>{city}</p>
+    </div>
+
+    <div>
+      <Globe size={25} />
+      <p>{country}</p>
+    </div>
   </article>
 );
