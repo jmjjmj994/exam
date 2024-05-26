@@ -37,6 +37,19 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
       valid = false;
     }
 
+    if (
+      valid &&
+      selectedRange?.from !== undefined &&
+      selectedRange.to !== undefined
+    )
+      handleBookingDates(
+        {
+          from: selectedRange.from,
+          to: selectedRange.to,
+        },
+        valid
+      );
+
     if (valid && selectedRange?.from !== undefined)
       handleBookingDates(
         {
@@ -67,12 +80,12 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
       }
       return range;
     });
+    handleBookingDates(range || { from: null, to: null }, !!range); // Pass true if range is present, false otherwise
   };
-  const formatDate = (date: Date | undefined) => {
-    return date ? format(date, 'MMM dd, yyyy') : '';
-  };
-
   const footer = () => {
+    const formatDate = (date: Date | undefined) => {
+      return date ? format(date, 'MMM dd, yyyy') : '';
+    };
     if (!selectedRange) {
       return (
         <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  mt-4 border border-custom-strokeWeak rounded-md px-1 py-1">

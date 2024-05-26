@@ -29,15 +29,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   });
 
   const handleBookingDates = (
-    dates: { from: Date; to: Date },
+    dates: { from: Date | null; to: Date | null },
     flag: boolean
   ) => {
-    setBookingDate({
-      from: dates.from,
-      to: dates.to,
-    });
-    console.log('called');
+    setBookingDate(dates);
+    console.log(dates, 'data in booking func');
   };
+
   useEffect(() => {
     const countDays = (from: Date | null, to: Date | null) => {
       if (!from || !to) return 0;
@@ -63,11 +61,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     setGuests(e);
   };
   const onSubmit = (e: { preventDefault: () => void }) => {
-    console.log(bookingDate);
     e.preventDefault();
-    if ('from' in bookingDate && 'to' in bookingDate) {
-      /*     redirectUser(); */
-      console.log('all present');
+
+    if (bookingDate.from && bookingDate.to) {
+      console.log('ready');
     } else {
       console.log('not ready');
     }
