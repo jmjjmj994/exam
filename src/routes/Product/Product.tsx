@@ -41,6 +41,7 @@ export const Product = () => {
               id={data.id}
               bookings={data.bookings}
               price={data.price}
+              maxGuests={data.maxGuests}
             />
           </section>
         </>

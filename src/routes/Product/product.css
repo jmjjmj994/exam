@@ -42,10 +42,6 @@
   max-height: 30rem;
 }
 
-
-
-
-
 /* Booking calendar*/
 .rdp {
   --rdp-cell-size: 45px; /* Size of the day cells. */
@@ -59,6 +55,9 @@
   --rdp-selected-color: #fff; /* Color of selected day text */
 
   width: 100%;
+  border: 1px solid hsl(258, 23%, 71%);
+  border-radius: 6px;
+  padding: 4px;
 }
 
 /* Hide elements for devices that are not screen readers */

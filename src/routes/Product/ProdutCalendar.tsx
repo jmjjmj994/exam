@@ -38,7 +38,13 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
     }
 
     if (valid && selectedRange?.from !== undefined)
-      handleBookingDates(selectedRange.from, valid);
+      handleBookingDates(
+        {
+          from: selectedRange.from,
+          to: selectedRange.to,
+        },
+        valid
+      );
   }, [selectedRange]);
 
   const disabledDates = bookings?.map((booking) => ({
@@ -69,14 +75,14 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
   const footer = () => {
     if (!selectedRange) {
       return (
-        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  rounded-sm">
-          <div className="grow  py-4 px-2 rounded-sm bg-slate-200">
+        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  mt-4 border border-custom-strokeWeak rounded-md px-1 py-1">
+          <div className="grow  py-2 px-2 rounded-sm bg-slate-200">
             <p>
               Check-in: <span>{formatDate(selectedRange?.from)}</span>
             </p>
           </div>
 
-          <div className="grow py-4 bg-orange-300 px-2 rounded-sm">
+          <div className="grow py-2 bg-orange-300 px-2 rounded-sm">
             <p>
               Check-out: <span>{formatDate(selectedRange?.to)}</span>
             </p>
@@ -85,13 +91,13 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
       );
     } else if (selectedRange.from && selectedRange.to) {
       return (
-        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  rounded-sm">
-          <div className="grow  py-4 px-2 rounded-sm bg-slate-200">
+        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  border border-custom-strokeWeak rounded-md mt-4  px-1 py-1">
+          <div className="grow  py-2 px-4 rounded-sm bg-slate-200">
             <p>
               Check-in: <span>{formatDate(selectedRange.from)}</span>
             </p>
           </div>
-          <div className="grow  py-4 px-2 rounded-sm bg-slate-200">
+          <div className="grow  py-2 px-4 rounded-sm bg-slate-200">
             <p>
               Check-out: <span>{formatDate(selectedRange.to)}</span>
             </p>
@@ -100,13 +106,13 @@ export const ProductCalendar: React.FC<ProductCalendarProps> = ({
       );
     } else if (selectedRange.from) {
       return (
-        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  rounded-sm">
-          <div className="grow  py-4 px-2 rounded-sm bg-slate-200">
+        <div className="flex flex-row gap-2 max-w-[70%]   bg-custom-background_white  mt-4 border  border-custom-strokeWeak rounded-md px-1 py-1">
+          <div className="grow  py-2 px-4 rounded-sm bg-slate-200">
             <p>
               Check-in: <span>{formatDate(selectedRange.from)}</span>
             </p>
           </div>
-          <div className="grow  py-4 px-2 rounded-sm bg-slate-200">
+          <div className="grow  py-2 px-4 rounded-sm bg-slate-200">
             <p>Check-out:</p>
           </div>
         </div>

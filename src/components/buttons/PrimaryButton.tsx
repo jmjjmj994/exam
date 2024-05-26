@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 type PrimaryButtonProps = {
   type: 'submit' | 'button';
-  children: string | JSX.Element ;
+  children: string | JSX.Element;
   onClick?: () => void;
   width: string;
 };
@@ -30,7 +30,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         <button
           type={type}
           onClick={onClick}
-          className={`${styles.primary_hover__state}  bg-custom-primary inter-semi-bold text-white w-auto py-2 rounded-sm`}
+          className={`${styles.primary_hover__state}  bg-custom-primary inter-semi-bold text-white w-auto py-2 px-4 rounded-sm`}
         >
           {children}
         </button>
