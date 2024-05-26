@@ -1,13 +1,14 @@
 import { MapPin, Star, Globe } from 'phosphor-react';
 import { useParams } from 'react-router-dom';
 import { formatISO } from 'date-fns';
-import { useStep } from 'src/state/useStore';
+import { useFormStep, useFormData } from 'src/state/useStore';
+import { ChangeEvent, FormEventHandler } from 'react';
 export const CheckoutForm = () => {
   const {
-    id,
-    dateFrom,
-    dateTo,
-    guests,
+    venueId,
+    dateStart,
+    dateEnd,
+    visitors,
     price,
     image,
     name,
@@ -15,20 +16,31 @@ export const CheckoutForm = () => {
     country,
     address,
   } = useParams();
-  const checkIn = dateFrom ? new Date(dateFrom) : new Date();
-  const checkOut = dateTo ? new Date(dateTo) : new Date();
-  const checkInFormatted = formatISO(new Date(checkIn), {
+  const { nextFormStep } = useFormStep();
+  const { bookingData, storeBookingData } = useFormData();
+  const dateFrom = dateStart ? new Date(dateStart) : new Date();
+  const dateTo = dateEnd ? new Date(dateEnd) : new Date();
+  const checkInFormatted = formatISO(new Date(dateFrom), {
     representation: 'date',
   });
-  const checkOutFormatted = formatISO(new Date(checkOut), {
-    representation: 'date',
-  });
-  const { nextStep } = useStep();
 
-  const onSubmit = (e) => {
+  const checkOutFormatted = formatISO(new Date(dateTo), {
+    representation: 'date',
+  });
+  const guests = Number(visitors);
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
+  const handleStoreData = () => {
+    storeBookingData({
+      dateFrom,
+      dateTo,
+      guests,
+      venueId: venueId ?? '',
+    });
+  };
+  console.log(bookingData);
   return (
     <section className="max-w-[50rem] bg-custom-background_white shadow-overlay  w-full">
       <form onSubmit={onSubmit} className=" border border-1">
@@ -36,6 +48,7 @@ export const CheckoutForm = () => {
           <legend>Cart</legend>
           <div className="flex items-center justify-between">
             <img
+              loading="lazy"
               className="max-w-[150px] max-h-[150px] rounded-md"
               src={image}
               alt="image of venue"
@@ -86,20 +99,16 @@ export const CheckoutForm = () => {
           </div>
         </fieldset>
 
-        <button onClick={nextStep} className="bg-purple-500">
+        <button
+          onClick={() => {
+            handleStoreData();
+            nextFormStep();
+          }}
+          className="bg-purple-500"
+        >
           Go to payment
         </button>
       </form>
     </section>
   );
 };
-
-/*  <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        fill="#000000"
-        viewBox="0 0 256 256"
-      >
-        <path d="M240,208h-8V88a8,8,0,0,0-8-8H160a8,8,0,0,0-8,8v40H104V40a8,8,0,0,0-8-8H32a8,8,0,0,0-8,8V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM168,96h48V208H168Zm-16,48v64H104V144ZM40,48H88V208H40ZM72,72V88a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Zm0,48v16a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm0,48v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm48,16V168a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Zm64,0V168a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Zm0-48V120a8,8,0,0,1,16,0v16a8,8,0,0,1-16,0Z"></path>
-      </svg> */

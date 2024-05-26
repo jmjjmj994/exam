@@ -1,8 +1,42 @@
-import { useStep } from 'src/state/useStore';
+import { useFormStep, useFormData } from 'src/state/useStore';
 import { IdentificationCard } from 'phosphor-react';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
+import { options } from 'src/api/config/api-options';
 export const CheckoutPayment = () => {
-  const { prevStep, confirmFinish } = useStep();
+  const { formReady, resetFormReady, prevFormStep, nextFormStep, formStep } =
+    useFormStep();
+  const { bookingData } = useFormData();
+
+  const bookVenue = (data: unknown) => {
+    console.log(data);
+    fetch('https://v2.api.noroff.dev/holidaze/bookings', {
+      method: 'POST',
+      headers: options.headers,
+      body: options.body(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        refreshFormState();
+        nextFormStep();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const refreshFormState = () => {
+    resetFormReady();
+
+    console.log(formReady, 'here');
+  };
+  console.log(formStep, formReady);
+
   return (
     <div className="max-w-[50rem] w-full  bg-custom-background_white shadow-overlay py-5 rounded-sm px-2 flex flex-col gap-4">
       <h1>Payment</h1>
@@ -17,7 +51,6 @@ export const CheckoutPayment = () => {
             readOnly
           />
         </label>
-
         <label
           className="flex flex-col rounded-md  w-full "
           htmlFor="card-number"
@@ -57,19 +90,22 @@ export const CheckoutPayment = () => {
         </div>
       </div>
       {/*   <button onClick={prevStep}>Go back</button>
-      
       <button onClick={confirmFinish}>Confirm</button> */}
 
       <div className="flex gap-4">
         <button
-          onClick={prevStep}
+          onClick={prevFormStep}
           type="button"
           className="border border-custom-primary inter-semi-bold  w-auto py-2 px-4 rounded-sm"
         >
           Go back
         </button>
 
-        <PrimaryButton onClick={confirmFinish} type="button" width="auto">
+        <PrimaryButton
+          onClick={() => bookVenue(bookingData)}
+          type="button"
+          width="auto"
+        >
           Confirm payment
         </PrimaryButton>
       </div>
