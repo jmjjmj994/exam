@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import { XCircle } from 'phosphor-react';
+import { PrimaryButton } from '../buttons/PrimaryButton';
+import { SearchLocation } from './search-inputs/SearchLocation';
+import { z } from 'zod';
 import {
   useFieldArray,
   useForm,
@@ -11,6 +14,11 @@ import {
   UseFieldArrayRemove,
   SubmitHandler,
 } from 'react-hook-form';
+
+export type SearchFieldValuesProps = {
+  register: UseFormRegister<FieldValues>;
+};
+
 type SearchFormMobileProps = {
   active: boolean;
   onClick: () => void;
@@ -24,8 +32,10 @@ export const SearchFormMobile: React.FC<SearchFormMobileProps> = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
-  console.log(active, onClick);
+  } = useForm<FieldValues>();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return createPortal(
     <motion.section
       initial={{ y: '-100%' }}
@@ -40,7 +50,12 @@ export const SearchFormMobile: React.FC<SearchFormMobileProps> = ({
         {' '}
         <XCircle size={30} aria-label="close icon" />
       </button>
-      <form action=""></form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <SearchLocation register={register} />
+        <PrimaryButton type="submit" width="full">
+          Search
+        </PrimaryButton>
+      </form>
     </motion.section>,
     document.getElementById('portal') as HTMLDivElement
   );
