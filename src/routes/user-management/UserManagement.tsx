@@ -6,6 +6,7 @@ import { useApiError } from 'src/api/hooks/use-api-error.hook';
 import { Spinner } from 'src/api/ui/Spinner';
 import { venueSchema, VenueType } from 'src/api/validation/venue-schema';
 import { UserManagementTable } from './UserManagementTable';
+import { Helmet } from 'react-helmet-async';
 import './management.css';
 
 export const UserManagement = () => {
@@ -56,6 +57,9 @@ export const UserManagement = () => {
 
   return (
     <div className="w-full h-full flex items-center justify-center">
+      <Helmet>
+        <title>Holidaze | user management</title>
+      </Helmet>
       <section className="  w-full h-full flex flex-col gap-10 py-20">
         <h1>Manage your venues</h1>
 

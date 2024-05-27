@@ -10,6 +10,7 @@ import { Checkout } from './routes/checkout/Checkout';
 import { Profile } from './routes/Profile/Profile';
 import { CreateVenue } from './routes/create-venue/CreateVenue';
 import { UserManagement } from './routes/user-management/UserManagement';
+import { UpdateVenue } from './routes/update-venue/UpdateVenue';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/manage-venues/:name',
         element: <UserManagement />,
+      },
+      {
+        path: '/update-venue/:id',
+        element: <UpdateVenue />,
       },
     ],
   },

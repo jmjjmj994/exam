@@ -50,8 +50,9 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
             </td>
             <td className="inter-light py-2  text-system-special-primary border bg-system-special-fill relative">
               <Link
-                className=" absolute inset-0 w-full h-full  flex items-center justify-center"
-                to={`/dashboard/user-venue/${id}`}
+                to={`/update-venue/${id}`}
+                className=" absolute inset-0 w-full h-full flex items-center
+                justify-center"
               >
                 <Eye size={18} />
               </Link>

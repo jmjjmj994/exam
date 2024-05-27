@@ -17,7 +17,7 @@ import { createVenueSchema } from './create-venue-schema';
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { options } from 'src/api/config/api-options';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
-import { create } from 'zustand';
+
 
 /* */
 
@@ -26,7 +26,7 @@ export type FormValues = {
   description?: string;
   media?: {
     url: string | undefined;
-    alt: string;
+    alt: 'image of venue';
   }[];
   price?: number;
   maxGuests?: number;

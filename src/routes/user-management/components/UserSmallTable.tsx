@@ -7,7 +7,7 @@ export const UserSmallTable: React.FC<UserManagementTableProps> = ({
 }) => (
   <div className=" grid cols-auto  gap-4">
     {data.map(({ id, name, created, price, rating }) => (
-      <Link to={''}>
+      <Link to={`/update-venue/${id}`}>
         <article
           key={id}
           className=" bg-white shadow-overlay hover:bg-slate-50 rounded-sm flex flex-wrap gap-1 px-2 py-3 inter-light  text-sm md:text-base justify-between"
