@@ -35,12 +35,21 @@ export const userActionsCard: ActionsCardType[] = [
   },
 ];
 
-export const venueManagerLockedCard = {
-  icon: <Star size={25} />,
-  title: 'Venue Manager Exclusive Features',
-  content:
-    'Unlock exclusive Venue Manager features! Easily create, update, view, and delete venues to manage your portfolio efficiently.',
+
+export const manageVenuesCard: ActionsCardType = {
+  id: 1,
+  path: '/manage-venues',
+  icon: <CirclesThreePlus size={25} />,
+  title: 'Manage Your Venues',
+  content: 'Create, update, view, and delete your venues all in one place. Simplify your venue management process and attract more clients.',
 };
+
+
+
+
+
+
+
 
 export const venueManagerActionsCard: ActionsCardType[] = [
   {

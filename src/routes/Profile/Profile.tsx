@@ -3,7 +3,6 @@ import { ProfileCard } from './ProfileCard';
 import { ProfileOptions } from './ProfileOptions';
 import { Helmet } from 'react-helmet-async';
 import { useBoolean } from 'src/hooks/use-boolean.hook';
-import { ProfileForm } from './ProfileForm';
 import { Spinner } from 'src/api/ui/Spinner';
 export const Profile = () => {
   const username = JSON.parse(localStorage.getItem('user') || '').name;
@@ -30,7 +29,7 @@ export const Profile = () => {
           venueManager={data.venueManager}
           _count={data._count}
         />
-        <ProfileOptions venueManager={data.venueManager}/>
+        <ProfileOptions name={data.name} venueManager={data.venueManager} />
       </div>
     </section>
   );

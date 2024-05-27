@@ -3,22 +3,28 @@ export const venueSchema = z.object({
   id: z.string().default(''),
   name: z.string().default(''),
   description: z.string().default(''),
-  _count: z.object({
-    bookings: z.number().default(0),
-  }),
-  owner: z.object({
-    avatar: z.object({
-      url: z.string().default(''),
-      alt: z.string().default(''),
-    }),
-    banner: z.object({
-      url: z.string().default(''),
-      alt: z.string().default(''),
-    }),
-    name: z.string(),
-    email: z.string().optional(),
-    bio: z.string().nullable().default(null),
-  }),
+  _count: z
+    .object({
+      bookings: z.number().default(0),
+    })
+    .optional(),
+  owner: z
+    .object({
+      avatar: z
+        .object({
+          url: z.string().default(''),
+          alt: z.string().default(''),
+        })
+        .optional(),
+      banner: z.object({
+        url: z.string().default(''),
+        alt: z.string().default(''),
+      }),
+      name: z.string().default('').optional(),
+      email: z.string().optional().default('').optional(),
+      bio: z.string().nullable().default(null).optional(),
+    })
+    .optional(),
   media: z
     .array(
       z.object({
@@ -36,7 +42,8 @@ export const venueSchema = z.object({
     breakfast: z.boolean().default(false),
     pets: z.boolean().default(false),
   }),
-  created: z.string(),
+  created: z.string().optional(),
+  updated: z.string().optional(),
   bookings: z
     .array(
       z.object({

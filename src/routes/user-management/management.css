@@ -1,0 +1,77 @@
+/* .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-content: space-between;
+  background-color: orange;
+  gap: 10px;
+}
+
+.clamped {
+  font-size: clamp(10px, 10vw, 12px);
+}
+ */
+
+.user-management-table {
+  text-align: left;
+  width: 100%;
+
+}
+
+
+
+th,
+caption {
+}
+
+td {
+  /*   border-bottom: 1px solid rgb(220, 216, 216); */
+  white-space: no-wrap;
+}
+
+th,
+td,
+caption {
+  padding-inline: 10px;
+}
+
+/* tr:hover {
+    background-color: orange;
+  } */
+
+tr:nth-child(even) {
+  background-color: rgb(247, 245, 245);
+}
+
+.trash_wiggle:hover {
+  animation: wiggle 250ms infinite ease-in-out;
+}
+
+@keyframes wiggle {
+  0% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: 5deg;
+  }
+  100% {
+    rotate: -5deg;
+  }
+  /*   from {
+      rotate: 5deg;
+    }
+    to {
+      rotate: -5;
+    } */
+}
+
+.image_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
+}
+
+
+.primary-hover--state:is(:hover, :focus, :active) {
+  background-color: hsl(259, 100%, 55%);
+  transition: 80ms ease-in-out;
+}

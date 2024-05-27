@@ -6,5 +6,5 @@ export const useApiLoader = (): [boolean, () => void] => {
     setIsLoading(false);
   };
 
-  return [isLoading, handleIsLoading] ;
+  return [isLoading, handleIsLoading] as const ;
 };

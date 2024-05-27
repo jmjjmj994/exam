@@ -9,6 +9,7 @@ import { Product } from './routes/product/Product';
 import { Checkout } from './routes/checkout/Checkout';
 import { Profile } from './routes/Profile/Profile';
 import { CreateVenue } from './routes/create-venue/CreateVenue';
+import { UserManagement } from './routes/user-management/UserManagement';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/create-venue',
         element: <CreateVenue />,
+      },
+      {
+        path: '/manage-venues/:name',
+        element: <UserManagement />,
       },
     ],
   },
