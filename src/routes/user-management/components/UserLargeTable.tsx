@@ -1,8 +1,6 @@
 import { formatISO } from 'date-fns';
 import { Eye, Star, Trash } from 'phosphor-react';
 import { Link } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-const notify = () => toast('here is a god damn toast');
 import { UserManagementTableProps } from '../UserManagementTable';
 import { useDeleteVenue } from '../api/use-delete-venue.hook';
 export const UserLargeTable: React.FC<UserManagementTableProps> = ({
@@ -12,11 +10,7 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
   console.log(responseSuccess);
   return (
     <div className="overflow-x-auto h-full   py-4 px-4  rounded-md">
-      <div>
-        <button onClick={notify}>toast</button>
-        <Toaster />
-      </div>
-      <table className="user-management-table  ">
+      <table className="user-management-table">
         <caption className="text-left text-xl inter-semi-bold">
           Venue management
         </caption>
@@ -35,7 +29,13 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
           {data.map(({ id, name, created, updated, price, rating }) => (
             <tr key={id}>
               <td className="inter-light py-2 rounded-sm ">
-                <button onClick={() => handleDeleteVenue(id)}>Delete</button>
+                <button
+                  onClick={() => {
+                    handleDeleteVenue(id);
+                  }}
+                >
+                  Delete
+                </button>
               </td>
               <td className="inter-light py-2">{name}</td>
               <td className="inter-light py-2">

@@ -12,12 +12,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { X, Plus } from 'phosphor-react';
 import { Inputs } from 'src/components/Inputs/Inputs';
 import { createVenueSchema } from './create-venue-schema';
-
+import { ToasterProvider } from 'src/components/toast-notification/Toaster';
+import {
+  errorToast,
+  successToast,
+} from 'src/components/toast-notification/toast';
 /* */
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { options } from 'src/api/config/api-options';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
-
 
 /* */
 
@@ -49,7 +52,7 @@ export const CreateVenueForm = () => {
     register,
     handleSubmit,
     control,
-
+reset,
     formState: { errors },
   } = useForm<FieldValues>({
     resolver: zodResolver(createVenueSchema),
@@ -77,6 +80,8 @@ export const CreateVenueForm = () => {
       })
       .then((data) => {
         console.log(data);
+        successToast('Successfully created a venue', 'bottom-right');
+        reset()
       })
       .catch((error) => console.log(error));
   };
@@ -86,6 +91,7 @@ export const CreateVenueForm = () => {
       className="w-full flex flex-col gap-8 pb-20"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <ToasterProvider />
       <h1 className="pt-20">Create a venue</h1>
       <Inputs
         type="text"
@@ -181,7 +187,6 @@ const FormImages = ({ fields, register, append, remove }: FieldValues) => (
 
 const Guests = ({ register }: FieldValues) => (
   <fieldset className="flex flex-col gap-2 inter-light py-2 border w-full pl-2 rounded-sm">
-
     <legend className="inter-bold">How many guests are allowed</legend>
     <div className="flex items-center gap-2">
       <input
@@ -193,7 +198,7 @@ const Guests = ({ register }: FieldValues) => (
       />
       <label htmlFor="guest1">1</label>
     </div>
- <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2">
       <input id="guest2" type="radio" value={2} {...register('maxGuests')} />
       <label htmlFor="guest2">2</label>
     </div>
