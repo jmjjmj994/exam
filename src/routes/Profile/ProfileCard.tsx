@@ -22,9 +22,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   venueManager,
   _count,
 }) => {
-  console.log(url, 'in profile card');
   return (
-    <section className="flex flex-col md:flex-row">
+    <section className="flex flex-col md:flex-row gap-2">
       <article
         className={` md:max-w-[20rem] w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay`}
       >

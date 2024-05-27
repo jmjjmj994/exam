@@ -54,7 +54,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         return response.json();
       })
       .then((data) => {
-        console.log('Success changing avatar');
+        console.log(data, 'Success changing avatar');
         window.location.reload();
       })
       .catch((error) => {
@@ -64,7 +64,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
   return (
     <form
-      className="w-full self-start bg-orange-500"
+      className="w-full self-start bg-custom-background_white px-2 py-2 rounded-sm shadow-overlay"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Inputs
@@ -75,6 +75,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         required={false}
         optional={true}
         register={register}
+        errors={errors.avatar?.url?.message}
       />
 
       <label htmlFor="venueManager">

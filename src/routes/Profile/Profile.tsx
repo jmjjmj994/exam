@@ -9,7 +9,6 @@ export const Profile = () => {
   const username = JSON.parse(localStorage.getItem('user') || '').name;
   const [data, isLoading, error] = useFetchProfile(username);
   const [active, setFalse, setTrue] = useBoolean();
-  console.log(data.avatar.url, 'in profile', data.venueManager);
   const loading = <Spinner />;
   if (isLoading) {
     return loading;

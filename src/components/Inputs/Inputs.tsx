@@ -7,7 +7,6 @@ interface InputsProps extends FieldValues {
   optional: boolean;
   required: boolean;
   errors?: string;
-  defaultValue?: string;
 }
 export const Inputs: React.FC<InputsProps> = ({
   type,
@@ -18,9 +17,7 @@ export const Inputs: React.FC<InputsProps> = ({
   optional,
   register,
   errors,
-  /*   defaultValue, */
 }) => {
-  console.log(register);
   return (
     <div>
       <label htmlFor={id}>
@@ -36,7 +33,14 @@ export const Inputs: React.FC<InputsProps> = ({
       </label>
       {errors && (
         <div className="min-h-[5vh]">
-          {errors && <label htmlFor={`error-${name}`}>{errors}</label>}
+          {errors && (
+            <label
+              className="inter-light text-md text-red-500"
+              htmlFor={`error-${name}`}
+            >
+              {errors}
+            </label>
+          )}
         </div>
       )}
     </div>
