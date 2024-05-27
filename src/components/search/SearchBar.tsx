@@ -11,7 +11,6 @@ export const SearchBar = () => {
     setFalse();
   }, [isMobile]);
 
-  console.log(active, setFalse);
   return (
     <div className="h-[2.5rem]">
       <SearchBarButton onClick={setTrue} />

@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 
 export const App = () => {
   const { data, isLoading, error } = useFetchVenues(1);
+  
   const filterData = data.data.filter(
     (venue) =>
       venue.location.address &&

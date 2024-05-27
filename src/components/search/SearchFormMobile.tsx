@@ -3,18 +3,8 @@ import { createPortal } from 'react-dom';
 import { XCircle } from 'phosphor-react';
 import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SearchLocation } from './search-inputs/SearchLocation';
-import { z } from 'zod';
-import {
-  useFieldArray,
-  useForm,
-  Controller,
-  UseFormRegister,
-  FieldValues,
-  Field,
-  UseFieldArrayRemove,
-  SubmitHandler,
-} from 'react-hook-form';
-
+import { useForm, UseFormRegister, FieldValues } from 'react-hook-form';
+import { useSearchLocation } from './api/use-search-location.hook';
 export type SearchFieldValuesProps = {
   register: UseFormRegister<FieldValues>;
 };
@@ -33,7 +23,10 @@ export const SearchFormMobile: React.FC<SearchFormMobileProps> = ({
     reset,
     formState: { errors },
   } = useForm<FieldValues>();
-  const onSubmit = (data) => {
+
+  const [data, meta, fetchData] = useSearchLocation();
+  const onSubmit = (formData) => {
+    fetchData(formData.location);
     console.log(data);
   };
   return createPortal(
