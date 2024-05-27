@@ -21,7 +21,7 @@ export const Profile = () => {
       </Helmet>
       <h1 className="bg-orange-500">Profile</h1>
 
-      <div className={`max-w-[50rem]`}>
+      <div className={`max-w-[50rem] flex flex-col gap-4`}>
         <ProfileCard
           active={active}
           name={data.name}
@@ -30,7 +30,7 @@ export const Profile = () => {
           venueManager={data.venueManager}
           _count={data._count}
         />
-        <ProfileOptions />
+        <ProfileOptions venueManager={data.venueManager}/>
       </div>
     </section>
   );

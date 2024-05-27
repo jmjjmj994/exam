@@ -3,7 +3,6 @@ import { useApiLoader } from '../hooks/use-api-loader.hook';
 import { options } from '../config/api-options';
 import { VenueType, venueSchema } from '../validation/venue-schema';
 import { useApiError } from '../hooks/use-api-error.hook';
-import { venuesSchema } from '../validation/venues-schema';
 
 export const useFetchVenue = (id: string | undefined): [VenueType, boolean] => {
   const [data, setData] = useState<VenueType>({} as VenueType);

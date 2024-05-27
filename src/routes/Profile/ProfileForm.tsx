@@ -32,10 +32,8 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     },
     resolver: zodResolver(profileUpdateSchema),
   });
-  console.log(url, 'in form');
 
   const onSubmit = (data: unknown) => {
-    console.log(isDirty);
     if (!isDirty) {
       console.log('Form is not dirty, no need to submit');
       return;
