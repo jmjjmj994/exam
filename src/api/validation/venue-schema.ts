@@ -75,7 +75,7 @@ export const venueSchema = z.object({
     .optional(),
 });
 
-const bookingsSchema = z
+export const bookingsSchema = z
   .array(
     z.object({
       id: z.string(),

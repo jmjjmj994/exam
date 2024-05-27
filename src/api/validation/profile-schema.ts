@@ -1,8 +1,8 @@
 import { z } from 'zod';
-
 export const profileSchema = z.object({
   name: z.string().default(''),
   email: z.string().default(''),
+  bio: z.string().default(''),
   banner: z
     .object({
       url: z.string().default(''),

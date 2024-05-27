@@ -42,7 +42,7 @@ h6 {
 
 @layer base {
   :root {
-    --background: 0, 0%, 95%;
+    --background: 0, 0%, 98%;
     --background_white: 0, 0%, 100%;
     --primary: 259, 100%, 60%;
     --textStrong: 258, 18%, 24%;
