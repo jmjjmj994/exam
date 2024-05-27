@@ -20,10 +20,10 @@ export const Inputs: React.FC<InputsProps> = ({
 }) => {
   return (
     <div>
-      <label className="" htmlFor={id}>
+      <label className="inter-semi-bold" htmlFor={id}>
         {label}
         {required && (
-          <span className="inter-light text-xs ml-2">(required)</span>
+          <span className="inter-semi-bold text-xs ml-2">(required)</span>
         )}
         {optional && (
           <span className="inter-light text-xs ml-2">(optional)</span>

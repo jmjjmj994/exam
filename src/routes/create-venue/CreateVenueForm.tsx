@@ -180,9 +180,10 @@ const FormImages = ({ fields, register, append, remove }: FieldValues) => (
 );
 
 const Guests = ({ register }: FieldValues) => (
-  <fieldset className="inter-light py-2 rounded-sm border w-full pl-2">
+  <fieldset className="flex flex-col gap-2 inter-light py-2 border w-full pl-2 rounded-sm">
+
     <legend className="inter-bold">How many guests are allowed</legend>
-    <div>
+    <div className="flex items-center gap-2">
       <input
         id="guest1"
         type="radio"
@@ -192,16 +193,16 @@ const Guests = ({ register }: FieldValues) => (
       />
       <label htmlFor="guest1">1</label>
     </div>
-    <div>
+ <div className="flex items-center gap-2">
       <input id="guest2" type="radio" value={2} {...register('maxGuests')} />
       <label htmlFor="guest2">2</label>
     </div>
 
-    <div>
+    <div className="flex items-center gap-2">
       <input id="guest3" type="radio" value={3} {...register('maxGuests')} />
       <label htmlFor="guest3">3</label>
     </div>
-    <div>
+    <div className="flex items-center gap-2">
       <input id="guest4" type="radio" value={4} {...register('maxGuests')} />
       <label htmlFor="guest4">4</label>
     </div>
