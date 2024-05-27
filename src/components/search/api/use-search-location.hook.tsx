@@ -1,6 +1,6 @@
 //        `https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true&page=${currentPage}`,
 
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { options } from 'src/api/config/api-options';
 
 export const useSearchLocation = () => {
