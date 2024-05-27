@@ -1,4 +1,5 @@
 type ProfileCardProps = {
+  active: boolean;
   name: string;
   email: string;
 
@@ -12,42 +13,51 @@ type ProfileCardProps = {
     bookings: number;
   };
 };
+import { ProfileForm } from './ProfileForm';
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({
   name,
   email,
-
   avatar: { url, alt },
   venueManager,
   _count,
 }) => {
+  console.log(url, 'in profile card');
   return (
-    <article className="max-w-[20rem] w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay">
-      <div className="flex justify-between">
-        <img
-          className="w-[100px] h-[100px] object-cover aspect-auto rounded-full"
-          src={url}
-          alt={alt}
-        />
-        <p>{name}</p>
-      </div>
-      <div>
-        <p>Email address</p>
-        <p>{email}</p>
-      </div>
+    <section className="flex flex-col md:flex-row">
+      <article
+        className={` md:max-w-[20rem] w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay`}
+      >
+        <div className="flex justify-between">
+          <img
+            className="w-[100px] h-[100px] object-cover aspect-auto rounded-full"
+            src={url}
+            alt={alt}
+          />
+          <p>{name}</p>
+        </div>
+        <div>
+          <p>Email address</p>
+          <p>{email}</p>
+        </div>
 
-      <div>
-        <p>Role</p>
-        {venueManager ? <p>Venue manager</p> : <p>User</p>}
-      </div>
+        <div>
+          <p>Role</p>
+          {venueManager ? <p>Venue manager</p> : <p>User</p>}
+        </div>
 
-      <div>
-        Statistics
-        <p>Bookings: {_count.bookings}</p>
-        <p>Venues: {_count.venues}</p>
-      </div>
-
-      <button className="w-[15rem] bg-orange-500">Edit profile</button>
-    </article>
+        <div>
+          Statistics
+          <p>Bookings: {_count.bookings}</p>
+          <p>Venues: {_count.venues}</p>
+        </div>
+      </article>
+      <ProfileForm
+        url={url}
+        alt={alt}
+        venueManager={venueManager}
+        name={name}
+      />
+    </section>
   );
 };
