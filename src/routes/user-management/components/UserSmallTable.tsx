@@ -1,4 +1,4 @@
-import { Star, Eye } from 'phosphor-react';
+import { Star } from 'phosphor-react';
 import { formatISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
@@ -6,7 +6,7 @@ export const UserSmallTable: React.FC<UserManagementTableProps> = ({
   data,
 }) => (
   <div className=" grid cols-auto  gap-4">
-    {data.map(({ id, name, created, updated, price, rating }) => (
+    {data.map(({ id, name, created, price, rating }) => (
       <Link to={''}>
         <article
           key={id}
@@ -32,24 +32,4 @@ export const UserSmallTable: React.FC<UserManagementTableProps> = ({
       </Link>
     ))}
   </div>
-
-  /*  <article>
-    <div>
-      <p>
-        Created: <span>2024-05-27</span>
-      </p>
-      <p>
-        Updated: <span>2024-05-27</span>
-      </p>
-      <span>
-        <Star />4{' '}
-      </span>
-    </div>
-    <div>
-      <p>La plaze Del Snorlax</p>
-    </div>
-    <div>
-      <p>View venue</p>
-    </div>
-  </article> */
 );

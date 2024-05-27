@@ -1,5 +1,5 @@
 import { formatISO } from 'date-fns';
-import { TrashSimple, Eye, Star } from 'phosphor-react';
+import { Eye, Star } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
 export const UserLargeTable: React.FC<UserManagementTableProps> = ({
@@ -12,7 +12,6 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
       </caption>
       <thead className="w-full">
         <tr className="no-hov">
-          {/*         <th className="inter-bold">Quick delete</th> */}
           <th className="inter-semi-bold">Image</th>
           <th className="inter-semi-bold">Name</th>
           <th className="inter-semi-bold">Updated</th>
