@@ -1,7 +1,14 @@
 import React from 'react';
 import { UpdateEmblaCarousel } from './UpdateCarousel';
-import { WifiHigh, PawPrint, Pizza, Car } from 'phosphor-react';
-import { ProductAmenities } from '../product/ProductAmenities';
+import {
+  WifiHigh,
+  PawPrint,
+  Pizza,
+  Car,
+  UsersThree,
+  Info,
+} from 'phosphor-react';
+import styles from './styles.embla.module.css';
 type UpdatePreviewProps = {
   name: string;
   media: {
@@ -27,12 +34,12 @@ export const UpdatePreview: React.FC<UpdatePreviewProps> = ({
   description,
 }) => {
   return (
-    <article className="bg-orange-500 w-full">
+    <article className=" w-full bg-custom-background_white shadow-overlay rounded-sm hidden lg:block">
       <UpdateEmblaCarousel>
         {media.map((img, index) => (
           <img
             loading="lazy"
-            className="embla_slide object-cover w-full  aspect-auto max-w-[800px] max-h-[470px] rounded-md  shadow-overlay "
+            className={`${styles.embla_slide} cursor-grab`}
             key={index}
             src={img.url}
             alt={`image of ${img} venue`}
@@ -40,13 +47,17 @@ export const UpdatePreview: React.FC<UpdatePreviewProps> = ({
         ))}
       </UpdateEmblaCarousel>
 
-      <div className="flex flex-col gap-1">
-        <p className="inter-semi-bold">Amenities:</p>
-        <div className="flex gap-4 text-sm">
+      <div className="flex flex-col gap-4 my-4">
+        <div className="flex flex-col gap-1">
+          <p className="inter-semi-bold text-xl"> Venue name</p>
+          {name}
+        </div>
+
+        <div className="flex gap-1 text-sm  flex-col">
+          <p className="inter-semi-bold text-xl">Amenities</p>
           {!wifi && !parking && !pets && !breakfast && (
             <p>This venue does not offer any amenities.</p>
           )}
-
           {wifi && (
             <div>
               <WifiHigh size={25} />
@@ -71,6 +82,18 @@ export const UpdatePreview: React.FC<UpdatePreviewProps> = ({
               <p>Parking available</p>
             </div>
           )}
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <p className="inter-semi-bold text-xl">Guests</p>
+          <UsersThree size={25} />
+          <p>Number of guests: {maxGuests}</p>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <p className="inter-semi-bold text-xl">Description</p>
+          <Info size={25} />
+          <p>{description}</p>
         </div>
       </div>
     </article>

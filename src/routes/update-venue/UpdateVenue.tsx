@@ -16,33 +16,35 @@ export const UpdateVenue: React.FC<VenueType> = () => {
   }
 
   return (
-    <section className="h-full w-full flex flex-col justify-center items-center  ">
+    <section className="h-full w-full flex flex-col justify-center items-center">
       <Helmet>
         <title>Holidaze | update venue </title>
       </Helmet>
 
-      <section className="max-w-[50rem] h-full w-full flex flex-col gap-10 justify-center items-center ">
-        <h1 className="bg-blue-500 text-left w-full">Update venue</h1>
-        <UpdatePreview
-          name={data.name}
-          media={data.media}
-          wifi={data.meta.wifi}
-          pets={data.meta.pets}
-          parking={data.meta.parking}
-          breakfast={data.meta.breakfast}
-          description={data.description}
-          maxGuests={data.maxGuests}
-        />
-        <UpdateVenueForm
-          name={data.name}
-          media={data.media}
-          wifi={data.meta.wifi}
-          pets={data.meta.pets}
-          parking={data.meta.parking}
-          breakfast={data.meta.breakfast}
-          description={data.description}
-          maxGuests={data.maxGuests}
-        />
+      <section className=" max-w-[80rem] w-full">
+        <h1 className=" text-left w-full">Update venue</h1>
+        <section className="h-full w-full flex flex-col lg:flex-row gap-10  ">
+          <UpdatePreview
+            name={data.name}
+            media={data.media}
+            wifi={data.meta.wifi}
+            pets={data.meta.pets}
+            parking={data.meta.parking}
+            breakfast={data.meta.breakfast}
+            description={data.description}
+            maxGuests={data.maxGuests}
+          />
+          <UpdateVenueForm
+            name={data.name}
+            media={data.media}
+            wifi={data.meta.wifi}
+            pets={data.meta.pets}
+            parking={data.meta.parking}
+            breakfast={data.meta.breakfast}
+            description={data.description}
+            maxGuests={data.maxGuests}
+          />
+        </section>
       </section>
     </section>
   );

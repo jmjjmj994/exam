@@ -1,0 +1,45 @@
+.embla {
+  width: 100%;
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.embla_slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: square;
+  margin-inline-end: 20px;
+  margin-inline-start: 10px;
+  max-height: 30rem;
+}
+
+.embla__prev:is(:hover) {
+  background-color: rgb(49, 49, 49);
+}
+.embla__next:is(:hover) {
+  background-color: rgb(49, 49, 49);
+}
+
+.embla__prev,
+.embla__next {
+  background-color: rgb(13, 13, 13);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*bg-gray-300 h-[2rem] w-[2rem] rounded-full */
+
+.embla__prev {
+}
+.embla__next {
+}

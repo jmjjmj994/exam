@@ -1,6 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect } from 'react';
 import './product.css';
+import styles from './styles.embla.module.css'
 export const EmblaCarousel = ({ children }: { children: React.ReactNode }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const scrollPrev = useCallback(() => {
@@ -16,8 +17,8 @@ export const EmblaCarousel = ({ children }: { children: React.ReactNode }) => {
     }
   }, [emblaApi]);
   return (
-    <div className="embla" ref={emblaRef}>
-      <div className="embla__container">{children}</div>
+    <div className={styles.embla} ref={emblaRef}>
+      <div className={styles.embla__container}>{children}</div>
       <button
         className="embla__prev bg-gray-300 h-[2rem] w-[2rem] rounded-full"
         onClick={scrollPrev}

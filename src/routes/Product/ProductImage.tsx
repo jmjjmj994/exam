@@ -3,6 +3,7 @@ import { EmblaCarousel } from './EmblaCarousel';
 import { useEffect, useState } from 'react';
 import { checkUrlValid } from 'src/api/utilities/utilities';
 import './product.css';
+import styles from './styles.embla.module.css';
 type ProductImageProps = {
   media: {
     url: string;
@@ -18,7 +19,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
           {media.map((img, index) => (
             <img
               loading="lazy"
-              className="embla_slide object-cover w-full  aspect-auto max-w-[800px] max-h-[470px] rounded-md  shadow-overlay "
+              className={`${styles.embla_slide} object-cover w-full  aspect-auto max-w-[800px] max-h-[470px] rounded-md  shadow-overlay `}
               key={index}
               src={img.url}
               alt={`image of ${img} venue`}

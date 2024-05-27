@@ -76,7 +76,7 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
 
   return (
     <form
-      className="flex flex-col gap-4  w-full bg-custom-background_white shadow-overlay px-2 py-2"
+      className="flex flex-col gap-4  static lg:max-w-[50rem] lg:self-start lg:sticky top-0 w-full bg-custom-background_white shadow-overlay px-2 py-2"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Inputs
