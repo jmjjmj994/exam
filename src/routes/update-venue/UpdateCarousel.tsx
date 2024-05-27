@@ -21,7 +21,10 @@ export const UpdateEmblaCarousel = ({
     }
   }, [emblaApi]);
   return (
-    <div className={`${styles.embla}`} ref={emblaRef}>
+    <div
+      className={`${styles.embla}  rounded-sm  mb-2 relative`}
+      ref={emblaRef}
+    >
       <div className={styles.embla__container}>{children}</div>
       <div className="flex gap-10 py-4 px-4 justify-between sm:justify-start">
         <button className={styles.embla__prev} onClick={scrollPrev}>

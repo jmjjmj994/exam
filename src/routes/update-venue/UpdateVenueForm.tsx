@@ -1,6 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Inputs } from 'src/components/Inputs/Inputs';
-
+import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
+import { ErrorButton } from 'src/components/buttons/ErrorButton';
+import { Trash } from 'phosphor-react';
 import {
   useFieldArray,
   useForm,
@@ -12,6 +14,7 @@ import {
   SubmitHandler,
 } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { options } from 'src/api/config/api-options';
 
 type UpdateVenueFormProps = {
   name: string;
@@ -25,10 +28,12 @@ type UpdateVenueFormProps = {
   parking: boolean;
   description: string;
   maxGuests: number;
+  price: number;
 };
 
 export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
   name,
+  price,
   media,
   wifi,
   pets,
@@ -56,6 +61,7 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
       },
       description: description,
       maxGuests: maxGuests,
+      price: price,
     },
   });
   const { fields, append, remove } = useFieldArray({
@@ -63,15 +69,36 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
     name: 'media',
   });
 
-  useForm({
-    defaultValues: async () =>
-      fetch(
-        `https://v2.api.noroff.dev/holidaze/venues/${id}?_owner=true&_bookings=true`
-      ),
-  });
-  /* console.log(data) */
-  const onSubmit = (dataT) => {
-    console.log(dataT);
+  const onSubmit = async (data: FieldValues) => {
+    if (!isDirty) {
+      console.log('Form is not dirty, no need to submit');
+      return;
+    }
+    const submitData: FieldValues = {
+      ...data,
+      maxGuests: Number(data.maxGuests),
+    };
+
+    fetch(` https://v2.api.noroff.dev/holidaze/venues/${id}`, {
+      method: 'PUT',
+      headers: options.headers,
+      body: JSON.stringify(submitData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `${response.statusText} error in UpdateVenueForm component`
+          );
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data, 'Success creating venue');
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -91,8 +118,37 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
 
       <FormImages register={register} fields={fields} />
       <Guests register={register} />
+
+      <label className="inter-bold" htmlFor="price">
+        <p>
+          Price for the venue{' '}
+          <span className="inter-light text-xs">(optional)</span>
+        </p>
+        <input
+          className="inter-light py-2 rounded-sm border w-full pl-2"
+          id="price"
+          type="number"
+          min={100}
+          max={8000}
+          step="100"
+          {...register('price', { valueAsNumber: true })}
+        />
+      </label>
       <Amenities register={register} />
-      <button type="submit">submit</button>
+      <label className="inter-light" htmlFor="bio">
+        <p className="flex items-center gap-2 inter-bold">
+          Update description
+          <span className="text-xs inter-light">(optional)</span>
+        </p>
+        <textarea
+          className=" min-h-[25vh]  py-2 rounded-sm border w-full pl-2"
+          id="description"
+          {...register('description')}
+        ></textarea>
+      </label>
+      <PrimaryButton type="submit" width="full">
+        Update venue
+      </PrimaryButton>
     </form>
   );
 };

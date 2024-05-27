@@ -21,30 +21,21 @@ export const UpdateVenue: React.FC<VenueType> = () => {
         <title>Holidaze | update venue </title>
       </Helmet>
 
-      <section className=" max-w-[80rem] w-full">
+      <section className=" max-w-[50rem] w-full">
         <h1 className=" text-left w-full">Update venue</h1>
-        <section className="h-full w-full flex flex-col lg:flex-row gap-10  ">
-          <UpdatePreview
-            name={data.name}
-            media={data.media}
-            wifi={data.meta.wifi}
-            pets={data.meta.pets}
-            parking={data.meta.parking}
-            breakfast={data.meta.breakfast}
-            description={data.description}
-            maxGuests={data.maxGuests}
-          />
-          <UpdateVenueForm
-            name={data.name}
-            media={data.media}
-            wifi={data.meta.wifi}
-            pets={data.meta.pets}
-            parking={data.meta.parking}
-            breakfast={data.meta.breakfast}
-            description={data.description}
-            maxGuests={data.maxGuests}
-          />
-        </section>
+
+        <UpdatePreview media={data.media} />
+        <UpdateVenueForm
+          name={data.name}
+          media={data.media}
+          wifi={data.meta.wifi}
+          pets={data.meta.pets}
+          parking={data.meta.parking}
+          breakfast={data.meta.breakfast}
+          description={data.description}
+          maxGuests={data.maxGuests}
+          price={data.price}
+        />
       </section>
     </section>
   );
