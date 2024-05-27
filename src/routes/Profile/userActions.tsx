@@ -45,7 +45,7 @@ export const venueManagerLockedCard = {
 export const venueManagerActionsCard: ActionsCardType[] = [
   {
     id: 1,
-    path: '',
+    path: '/create-venue',
     icon: <CirclesThreePlus size={25} />,
     title: 'Create a new venue',
     content:

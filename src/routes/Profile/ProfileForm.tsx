@@ -28,6 +28,8 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         url: url,
         alt: alt,
       },
+/*     
+defaultValues: async () => {data => data} */
       venueManager: venueManager,
     },
     resolver: zodResolver(profileUpdateSchema),

@@ -8,6 +8,7 @@ import { Login } from './routes/authentication/login/Login';
 import { Product } from './routes/product/Product';
 import { Checkout } from './routes/checkout/Checkout';
 import { Profile } from './routes/Profile/Profile';
+import { CreateVenue } from './routes/create-venue/CreateVenue';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/create-venue',
+        element: <CreateVenue />,
       },
     ],
   },

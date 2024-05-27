@@ -3,7 +3,7 @@ interface InputsProps extends FieldValues {
   type: string;
   label: string;
   id: string;
-  name: string;
+  name?: string;
   optional: boolean;
   required: boolean;
   errors?: string;
@@ -20,10 +20,14 @@ export const Inputs: React.FC<InputsProps> = ({
 }) => {
   return (
     <div>
-      <label htmlFor={id}>
+      <label className="" htmlFor={id}>
         {label}
-        {required && <span className="inter-light text-xs">(required)</span>}
-        {optional && <span className="inter-light text-xs">(optional)</span>}
+        {required && (
+          <span className="inter-light text-xs ml-2">(required)</span>
+        )}
+        {optional && (
+          <span className="inter-light text-xs ml-2">(optional)</span>
+        )}
         <input
           type={type}
           id={id}

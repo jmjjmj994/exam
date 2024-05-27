@@ -6,6 +6,7 @@ export const validUrlSchema = z.string().refine(
   },
   { message: 'Invalid image URL' }
 );
+
 export const profileUpdateSchema = z.object({
   avatar: z.object({
     url: validUrlSchema.optional(),

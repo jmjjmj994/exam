@@ -38,7 +38,7 @@ const VenueManagerActions: React.FC<VenueManagerActionsProp> = ({
   const availableVenueManagerContent = (
     <>
       {venueManagerActionsCard.map(({ id, path, icon, title, content }) => (
-        <Link className="relative" key={id} to={''}>
+        <Link className="relative" key={id} to={path}>
           <article className="flex flex-col gap-2 px-3 py-8 rounded-sm bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors">
             {icon}
             <p>{title}</p>
