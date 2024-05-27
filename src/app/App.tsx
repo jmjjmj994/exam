@@ -18,7 +18,7 @@ export const App = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <div className={styles.app_grid}>
+ {/*      <div className={styles.app_grid}>
         {isLoading &&
           Array.from({ length: 30 }).map((_, index) => (
             <VenuesSkeleton key={index} />
@@ -37,7 +37,7 @@ export const App = () => {
             />
           )
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
