@@ -56,11 +56,10 @@ export const UserManagement = () => {
 
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <section className="  w-full h-full flex flex-col">
+      <section className="  w-full h-full flex flex-col gap-10 py-20">
         <h1>Manage your venues</h1>
-     
-          <UserManagementTable data={data} />
-   
+
+        <UserManagementTable data={data} />
       </section>
     </div>
   );

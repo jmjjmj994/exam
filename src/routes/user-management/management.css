@@ -14,17 +14,14 @@
 .user-management-table {
   text-align: left;
   width: 100%;
-
 }
-
-
 
 th,
 caption {
 }
 
 td {
-  /*   border-bottom: 1px solid rgb(220, 216, 216); */
+  border-bottom: 1px solid rgb(220, 216, 216);
   white-space: no-wrap;
 }
 
@@ -34,9 +31,12 @@ caption {
   padding-inline: 10px;
 }
 
-/* tr:hover {
-    background-color: orange;
-  } */
+.no-hov {
+}
+
+tr:hover:not(.no-hov) {
+  background-color: rgb(231, 231, 231);
+}
 
 tr:nth-child(even) {
   background-color: rgb(247, 245, 245);
@@ -70,8 +70,9 @@ tr:nth-child(even) {
   gap: 5px;
 }
 
-
 .primary-hover--state:is(:hover, :focus, :active) {
   background-color: hsl(259, 100%, 55%);
   transition: 80ms ease-in-out;
 }
+
+/* border-custom--d-strokeWeak py-2 bg-custom-fill */

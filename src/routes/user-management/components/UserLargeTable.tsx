@@ -1,50 +1,60 @@
 import { formatISO } from 'date-fns';
-import { Trash, Eye } from 'phosphor-react';
+import { TrashSimple, Eye, Star } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
-export const UserLargeTable:React.FC<UserManagementTableProps> = ({ data }) => (
-  <div className="overflow-x-auto">
-    <table className="user-management-table bg-custom-background_white shadow-overlay my-20  ">
-      <caption className="text-left">Venue management</caption>
+export const UserLargeTable: React.FC<UserManagementTableProps> = ({
+  data,
+}) => (
+  <div className="overflow-x-auto bg-white py-4 px-4 shadow-overlay rounded-md">
+    <table className="user-management-table bg-custom-background_white ">
+      <caption className="text-left text-xl inter-semi-bold">
+        Venue management
+      </caption>
       <thead className="w-full">
-        <tr>
+        <tr className="no-hov">
           {/*         <th className="inter-bold">Quick delete</th> */}
-          <th className="inter-bold">Name</th>
-          <th className="inter-bold">Created</th>
-          <th className="inter-bold">Updated</th>
-          <th className="inter-bold">Listing price</th>
-          <th className="inter-bold">Rating</th>
-          <th className="inter-bold">View</th>
+          <th className="inter-semi-bold">Image</th>
+          <th className="inter-semi-bold">Name</th>
+          <th className="inter-semi-bold">Updated</th>
+          <th className="inter-semi-bold">Listing price</th>
+          <th className="inter-semi-bold">Price</th>
+          <th className="inter-semi-bold">Rating</th>
+          <th className="inter-semi-bold">View</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(({ id, name, created, updated, price, rating }) => (
+        {data.map(({ id, name, created, updated, price, rating, media }) => (
           <tr key={id}>
-            {/*     <td className="border-b-[1px] border-custom--d-strokeWeak py-2 bg-custom-fill w-[2rem] ">
-            <button className="px-1 bg-blue-500  py-1 text-system-error-primary border-system-error-strokeStrong bg-system-error-fill rounded-md">
-              <TrashSimple size={20} aria-label="trash icon" />
-            </button>
-          </td> */}
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
-              {name}
+            <td className="inter-light py-2 rounded-sm ">
+              <img
+                className="max-w-[50px] w-full h-[50px] object-cover aspect-auto"
+                src={media[0].url}
+                alt=""
+              />
             </td>
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
+            <td className="inter-light py-2">{name}</td>
+            <td className="inter-light py-2">
               {created &&
                 formatISO(new Date(created), { representation: 'date' })}
             </td>
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
+            <td className="inter-light py-2 rounded-sm">
               {updated &&
                 formatISO(new Date(updated), { representation: 'date' })}
             </td>
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
-              ${price}
+            <td className="inter-light py-2">${price}</td>
+            <td className="inter-light py-2">
+              <span className="flex items-center gap-1">
+                {' '}
+                <Star size={18} />
+                {rating}
+              </span>
             </td>
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
-              {rating}
-            </td>
-            <td className="border-b-[1px] border-custom--d-strokeWeak">
-              <Link to={`/dashboard/user-venue/${id}`}>
-                <Eye />
+            <td className="inter-light py-2  text-system-special-primary border bg-system-special-fill relative">
+              <Link
+                className=" absolute inset-0 w-full h-full  flex items-center justify-center"
+                to={`/dashboard/user-venue/${id}`}
+              >
+                <Eye size={18} />
               </Link>
             </td>
           </tr>
