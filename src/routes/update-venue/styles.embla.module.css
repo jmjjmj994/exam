@@ -22,14 +22,21 @@
 
 .embla__prev:is(:hover) {
   background-color: rgb(49, 49, 49);
+  opacity: 1;
+  will-change: opacity;
+  transition: 100ms;
 }
 .embla__next:is(:hover) {
   background-color: rgb(49, 49, 49);
+  opacity: 1;
+  will-change: opacity;
+  transition: 100ms;
 }
 
 .embla__prev,
 .embla__next {
   background-color: rgb(13, 13, 13);
+  opacity: 0.9;
   color: white;
   width: 40px;
   height: 40px;
@@ -42,8 +49,8 @@
 }
 
 .embla__prev {
-  left: 5px;
+  left: 20px;
 }
 .embla__next {
-  right: 5px;
+  right: 20px;
 }
