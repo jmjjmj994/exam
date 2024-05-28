@@ -11,6 +11,7 @@ import { Profile } from './routes/Profile/Profile';
 import { CreateVenue } from './routes/create-venue/CreateVenue';
 import { UserManagement } from './routes/user-management/UserManagement';
 import { UpdateVenue } from './routes/update-venue/UpdateVenue';
+import { SearchResults } from './routes/search-results/SearchResults';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/update-venue/:id',
         element: <UpdateVenue />,
+      },
+      {
+        path: '/search',
+        element: <SearchResults />,
       },
     
     ],

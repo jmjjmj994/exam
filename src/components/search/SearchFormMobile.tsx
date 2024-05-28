@@ -5,6 +5,7 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SearchLocation } from './search-inputs/SearchLocation';
 import { useForm, UseFormRegister, FieldValues } from 'react-hook-form';
 import { useSearchLocation } from './api/use-search-location.hook';
+import { useNavigate } from 'react-router-dom';
 export type SearchFieldValuesProps = {
   register: UseFormRegister<FieldValues>;
 };
@@ -17,6 +18,7 @@ export const SearchFormMobile: React.FC<SearchFormMobileProps> = ({
   active,
   onClick,
 }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,

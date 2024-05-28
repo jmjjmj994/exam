@@ -1,5 +1,11 @@
 import { create } from 'zustand';
 import { options } from 'src/api/config/api-options';
+/*store
+fetcher
+ligger i store
+når søk
+hent fra store
+ */
 export const useFetchLocationStore = create((set) => ({
   locationData: {data:[], meta:{}},
   fetchDataLocation: async (query) => {
