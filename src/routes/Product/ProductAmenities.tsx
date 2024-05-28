@@ -1,4 +1,4 @@
-import { WifiHigh, PawPrint, Pizza, Car, XCircle } from 'phosphor-react';
+import { WifiHigh, PawPrint, Pizza, Car} from 'phosphor-react';
 
 type ProductAmenitiesProps = {
   meta: {

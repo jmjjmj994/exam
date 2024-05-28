@@ -10,7 +10,7 @@ type BookingCardProps = {
   updated: string;
 };
 
-const deleteBooking = async (id) => {
+const deleteBooking = async (id:string) => {
   fetch(`https://v2.api.noroff.dev/holidaze/bookings/${id}`, {
     method: 'DELETE',
     headers: options.headers,

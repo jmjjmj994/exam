@@ -6,10 +6,10 @@ import { ProfileSchemaType, profileSchema } from '../validation/profile-schema';
 
 export const useFetchProfile = (
   username: string
-): [ProfileSchemaType, boolean] => {
+): [ProfileSchemaType, boolean, string] => {
   const [data, setData] = useState<ProfileSchemaType>(profileSchema.parse({}));
   const [isLoading, handleIsLoading] = useApiLoader();
-  const [error, handleError, clearError] = useApiError();
+  const [ error, setError,clearError] = useApiError();
 
   useEffect(() => {
     fetch(
@@ -36,9 +36,10 @@ export const useFetchProfile = (
       })
       .catch((error) => {
         console.log(error);
+        setError(error)
         handleIsLoading();
       });
   }, []);
 
-  return [data, isLoading];
+  return [data, isLoading, error];
 };

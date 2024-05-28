@@ -1,12 +1,12 @@
 import { formatISO } from 'date-fns';
-import { Eye, Star, Trash } from 'phosphor-react';
+import { Eye, Star } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
 import { useDeleteVenue } from '../api/use-delete-venue.hook';
 export const UserLargeTable: React.FC<UserManagementTableProps> = ({
   data,
 }) => {
-  const [responseSuccess, error, handleDeleteVenue] = useDeleteVenue();
+  const [responseSuccess, handleDeleteVenue] = useDeleteVenue();
   console.log(responseSuccess);
   return (
     <div className="overflow-x-auto h-full   py-4 px-4  rounded-md">
@@ -31,6 +31,7 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
               <td className="inter-light py-2 rounded-sm ">
                 <button
                   onClick={() => {
+                    // @ts-expect-error due to id may be null
                     handleDeleteVenue(id);
                   }}
                 >

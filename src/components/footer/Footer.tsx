@@ -1,4 +1,4 @@
-import { footerLinks } from './footer-links';
+
 export const Footer = () => (
   <footer className="footer footer-l bg-custom-background_white">
     <div className="element-wrapper">Wrapper</div>

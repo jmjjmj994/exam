@@ -4,38 +4,7 @@ import { options } from '../config/api-options';
 import { VenueType, venueSchema } from '../validation/venue-schema';
 import { useApiError } from '../hooks/use-api-error.hook';
 
-const initialVenueState: VenueType = {
-  id: '',
-  name: '',
-  description: '',
-  _count: { bookings: 0 },
-  owner: {
-    avatar: { url: '', alt: '' },
-    banner: { url: '', alt: '' },
-    name: '',
-    email: '',
-    bio: null,
-  },
-  media: [],
-  price: 0,
-  maxGuests: 0,
-  rating: 0,
-  meta: { wifi: false, parking: false, breakfast: false, pets: false },
-  created: '',
-  updated: '',
-  bookings: [],
-  location: {
-    address: null,
-    city: null,
-    zip: null,
-    country: null,
-    continent: null,
-    lat: null,
-    lng: null,
-  },
-};
-
-export const useFetchVenue = (id: string | undefined): [VenueType, boolean] => {
+export const useFetchVenue = (id: string | undefined): [VenueType, boolean, string] => {
   const [data, setData] = useState<VenueType>({} as VenueType);
   const [error, handleError, clearError] = useApiError();
   const [isLoading, handleIsLoading] = useApiLoader();
@@ -65,11 +34,11 @@ export const useFetchVenue = (id: string | undefined): [VenueType, boolean] => {
         })
         .catch((error) => {
           console.error(error);
-
+          handleError('Error in use fetch venue hook');
           handleIsLoading();
         });
     };
     fetchData();
   }, []);
-  return [data, isLoading];
+  return [data, isLoading, error];
 };

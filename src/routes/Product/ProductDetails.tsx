@@ -1,5 +1,5 @@
-import { Star, Calendar, UsersThree, Crown } from 'phosphor-react';
-import { formatISO } from 'date-fns';
+import { Star, UsersThree } from 'phosphor-react';
+
 type ProductDetailsProps = {
   bookings: number;
   created: string;
@@ -7,14 +7,14 @@ type ProductDetailsProps = {
   rating: number;
 };
 export const ProductDetails: React.FC<ProductDetailsProps> = ({
-  bookings,
-  created,
+  /*   bookings, */
+  /*   created, */
   maxGuests,
   rating,
 }) => {
-  const formattedDate = formatISO(new Date(created), {
+  /*   const formattedDate = formatISO(new Date(created), {
     representation: 'date',
-  });
+  }); */
   return (
     <article className="text-sm  flex flex-col gap-2">
       <h2 className="text-base inter-semi-bold">Details</h2>

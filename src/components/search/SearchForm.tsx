@@ -7,7 +7,7 @@ export const SearchForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+   
   } = useForm<FieldValues>();
   const navigate = useNavigate();
   const { setStateQuery } = useRecursiveDataFetcher();

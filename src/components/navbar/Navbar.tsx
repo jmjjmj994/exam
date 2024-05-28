@@ -1,4 +1,4 @@
-import { easeInOut, motion } from 'framer-motion';
+import {  motion } from 'framer-motion';
 import { useMediaMatch } from 'src/hooks/use-match-media.hook.tsx';
 import { useKeyEscape } from 'src/hooks/use-key-escape.hook';
 import { NavbarList } from './NavbarList';

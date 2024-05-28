@@ -1,18 +1,6 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Inputs } from 'src/components/Inputs/Inputs';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
-import { ErrorButton } from 'src/components/buttons/ErrorButton';
-import { Trash } from 'phosphor-react';
-import {
-  useFieldArray,
-  useForm,
-  Controller,
-  UseFormRegister,
-  FieldValues,
-  Field,
-  UseFieldArrayRemove,
-  SubmitHandler,
-} from 'react-hook-form';
+import { useFieldArray, useForm, FieldValues } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { options } from 'src/api/config/api-options';
 
@@ -43,12 +31,11 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
   maxGuests,
 }) => {
   const { id } = useParams();
-
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty },
+    formState: { isDirty },
   } = useForm({
     defaultValues: {
       media: media,
@@ -64,7 +51,7 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
       price: price,
     },
   });
-  const { fields, append, remove } = useFieldArray({
+  const { fields } = useFieldArray({
     control,
     name: 'media',
   });
@@ -146,6 +133,7 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
           {...register('description')}
         ></textarea>
       </label>
+
       <PrimaryButton type="submit" width="full">
         Update venue
       </PrimaryButton>
@@ -155,7 +143,7 @@ export const UpdateVenueForm: React.FC<UpdateVenueFormProps> = ({
 
 const FormImages = ({ fields, register }: FieldValues) => (
   <div className="grid grid-cols-1 sm:grid-cols-2  gap-3">
-    {fields.map((field, index) => (
+    {fields.map((field: FieldValues, index: number) => (
       <div key={field.id} className="w-full gap-2">
         <label htmlFor={`media[${index}]`}>
           <p className="flex items-center gap-2">

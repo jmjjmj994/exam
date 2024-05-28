@@ -41,7 +41,6 @@ export const Bookings = () => {
           setData(results.data);
           setMeta(results.meta);
 
-          clearError();
           handleIsLoading();
         })
         .catch((error) => {

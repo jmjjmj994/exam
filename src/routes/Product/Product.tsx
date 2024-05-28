@@ -10,19 +10,14 @@ import { ProductForm } from './ProductForm';
 import { Helmet } from 'react-helmet-async';
 import { Spinner } from 'src/api/ui/Spinner';
 import { useMediaMatch } from 'src/hooks/use-match-media.hook.tsx';
-import { useBoolean } from 'src/hooks/use-boolean.hook';
 import './product.css';
-import { useEffect } from 'react';
 export const Product = () => {
   const { id } = useParams();
   const [data, isLoading] = useFetchVenue(id);
   const isData = Object.values(data).length > 0;
-  const [active, setFalse, setTrue] = useBoolean();
+
   const [isMobile] = useMediaMatch('1240');
-  console.log(data);
-  useEffect(() => {
-    if (!isMobile) setFalse();
-  }, [isMobile]);
+
   return (
     <div className="relative ">
       <Helmet>
@@ -40,11 +35,16 @@ export const Product = () => {
                 isMobile && 'w-full'
               }  rounded-md px-4 py-4  w-[50%] self-start`}
             >
-              <ProductOwner avatar={data.owner.avatar} name={data.owner.name} />
+              {data.owner && data.owner.avatar && data.owner.name && (
+                <ProductOwner
+                  avatar={data.owner.avatar}
+                  name={data.owner.name}
+                />
+              )}
               <ProductDescription description={data.description} />
               <ProductDetails
-                bookings={data._count?.bookings}
-                created={data.created}
+                bookings={data._count?.bookings || 0}
+                created={data.created || ''}
                 maxGuests={data.maxGuests}
                 rating={data.rating}
               />
@@ -52,8 +52,6 @@ export const Product = () => {
               <ProductAmenities meta={data.meta} />
             </section>
             <ProductForm
-              active={active}
-              onClick={setFalse}
               isMobile={isMobile}
               id={data.id}
               bookings={data.bookings}

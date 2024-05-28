@@ -14,6 +14,7 @@ export const UpdateVenue: React.FC<PartialVenueType> = () => {
   if (isLoading) {
     return loading;
   }
+  console.log(data);
 
   return (
     <section className="h-full w-full flex flex-col justify-center items-center">

@@ -1,29 +1,19 @@
 import {
   useFieldArray,
   useForm,
-  Controller,
   UseFormRegister,
   FieldValues,
-  Field,
-  UseFieldArrayRemove,
-  SubmitHandler,
 } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { X, Plus } from 'phosphor-react';
 import { Inputs } from 'src/components/Inputs/Inputs';
 import { createVenueSchema } from './create-venue-schema';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
-import {
-  errorToast,
-  successToast,
-} from 'src/components/toast-notification/toast';
-/* */
-import { AddressAutofill } from '@mapbox/search-js-react';
+import { successToast } from 'src/components/toast-notification/toast';
+import { AddressAutofillWrapper } from './AddressAutofillWrapper';
 import { options } from 'src/api/config/api-options';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { Key } from 'react';
-
-/* */
 
 export type FormValues = {
   name?: string;
@@ -49,13 +39,7 @@ export type FormValues = {
 };
 
 export const CreateVenueForm = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<FieldValues>({
+  const { register, handleSubmit, control, reset } = useForm<FieldValues>({
     resolver: zodResolver(createVenueSchema),
     defaultValues: {
       media: [{ url: '', alt: 'image of venue' }],
@@ -266,24 +250,7 @@ const Location = ({ register, control }: FieldValues) => {
           <span className="text-xs">(required)</span>
         </label>
 
-        <AddressAutofill
-          accessToken={
-            'pk.eyJ1Ijoiam1qam1qOTk0IiwiYSI6ImNsdzNmMGswOTB3d2gyam11bXljbnZ6djAifQ.5NVq9fIs73cU6hSUdjU1bQ'
-          }
-        >
-          <Controller
-            control={control}
-            name="location.address"
-            render={({ field: { onChange, onBlur, value, ref } }) => (
-              <input
-                className="inter-light py-2 rounded-sm border w-full pl-2"
-                type="text"
-                id="address"
-                onChange={onChange}
-              />
-            )}
-          ></Controller>
-        </AddressAutofill>
+        <AddressAutofillWrapper control={control} />
       </div>
       <Inputs
         type="text"

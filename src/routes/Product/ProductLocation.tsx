@@ -1,5 +1,5 @@
-import { MapPin, Star, Globe } from 'phosphor-react';
-import { VenueType } from 'src/api/validation/venue-schema';
+import { MapPin, Globe } from 'phosphor-react';
+
 
 type ProductLocationProps = {
   location: {

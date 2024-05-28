@@ -3,12 +3,11 @@ import { useFetchVenues } from 'src/api/fetch/use-fetch-venues.hook';
 import { VenuesCard } from './VenuesCard';
 import { VenuesSkeleton } from './VenuesSkeleton';
 import styles from './styles.module.css';
-import { usePaginationFetcher } from 'src/state/apiStore';
 import { useEffect } from 'react';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const App = () => {
   const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();
-  const { data, isLoading, error } = useFetchVenues(1);
+  const { data, isLoading} = useFetchVenues(1);
 console.log(fetcherLoading)
   useEffect(() => {
     getData()

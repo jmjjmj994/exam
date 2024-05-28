@@ -1,13 +1,6 @@
 import React from 'react';
 import { UpdateEmblaCarousel } from './UpdateCarousel';
-import {
-  WifiHigh,
-  PawPrint,
-  Pizza,
-  Car,
-  UsersThree,
-  Info,
-} from 'phosphor-react';
+
 import styles from './styles.embla.module.css';
 type UpdatePreviewProps = {
   media: {

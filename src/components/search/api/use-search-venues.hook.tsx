@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export const useSearchVenues = (url, page) => {
+export const useSearchVenues = (url:string, page:number) => {
   const [data, setData] = useState([]);
   const [meta, setMeta] = useState({});
   useEffect(() => {

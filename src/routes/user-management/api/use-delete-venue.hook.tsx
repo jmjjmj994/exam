@@ -4,7 +4,7 @@ import { options } from 'src/api/config/api-options';
 export const useDeleteVenue = (): [
   string,
   string | null,
-  (arg: string) => void
+  (arg: string) => Promise<void>
 ] => {
   const [responseSuccess, setResponseSuccess] = useState('');
   const [error, clearError, handleError] = useApiError();
@@ -26,12 +26,13 @@ export const useDeleteVenue = (): [
         const results = await response.json();
         console.log(results);
         window.location.reload();
-
+        clearError('');
         setResponseSuccess(`Successfully deleted venue`);
       })
       .catch((error) => {
         console.error(error);
+        handleError();
       });
   };
-  return [responseSuccess, error, handleDeleteVenue] as const;
+  return [responseSuccess, error, handleDeleteVenue];
 };

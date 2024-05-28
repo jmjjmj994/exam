@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BookingsType, LocationType } from 'src/api/validation/venue-schema';
-import { useNavigate } from 'react-router-dom';
+
 import { ProductCalendar } from './ProdutCalendar';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
@@ -23,12 +23,12 @@ type ProductFormProps = {
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   id,
-  name,
-  image,
+  /*   name,
+  image, */
   bookings,
   price,
   maxGuests,
-  location: { city, address, country },
+  /*   location: { city, address, country }, */
 }) => {
   const pricePerDay = price;
   const [guests, setGuests] = useState(1);
@@ -40,7 +40,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     from: null,
     to: null,
   });
-  const navigate = useNavigate();
+  /*   const navigate = useNavigate(); */
   const handleBookingDates = (dates: {
     from: Date | null;
     to: Date | null;
@@ -49,6 +49,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     console.log(dates, 'data in booking func');
   };
   useEffect(() => {
+    console.log(bookingPrice);
     const countDays = (from: Date | null, to: Date | null) => {
       if (!from || !to) return 0;
       if (from > to) {

@@ -8,6 +8,8 @@ import { venueSchema, VenueType } from 'src/api/validation/venue-schema';
 import { UserManagementTable } from './UserManagementTable';
 import { Helmet } from 'react-helmet-async';
 import './management.css';
+import { ToasterProvider } from 'src/components/toast-notification/Toaster';
+import { errorToast } from 'src/components/toast-notification/toast';
 
 export const UserManagement = () => {
   const [isLoading, handleIsLoading] = useApiLoader();
@@ -45,24 +47,30 @@ export const UserManagement = () => {
         .catch((error) => {
           console.log(error);
           handleIsLoading();
+          handleError(error);
         });
     };
     fetchData();
   }, [name]);
+  console.log(data);
 
   const loading = <Spinner />;
   if (isLoading) {
     return loading;
   }
 
+  errorToast(error, 'bottom-right');
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
+      <ToasterProvider />
       <Helmet>
         <title>Holidaze | user management</title>
       </Helmet>
       <section className="w-full h-full flex flex-col gap-10 py-20">
         <h1>Manage your venues</h1>
-        <UserManagementTable data={data} />
+        {Array.isArray(data) && data.length > 0 && (
+          <UserManagementTable data={data} />
+        )}
       </section>
     </div>
   );

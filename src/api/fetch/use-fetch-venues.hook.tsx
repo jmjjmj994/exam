@@ -56,6 +56,8 @@ export const useFetchVenues = (page: number) => {
     };
     fetchData();
   }, [currentPage]);
-
-  return { data, isLoading, error, handleError };
+  const handlePage = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+  return { data, isLoading, error, handleError, handlePage };
 };
