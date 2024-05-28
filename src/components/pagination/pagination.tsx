@@ -23,7 +23,6 @@ export const Pagination: React.FC<PaginationProps> = ({
     };
     scrollToTop();
   }, [currentPage]);
-  console.log(currentPage);
   return (
     <div className=" flex items-center justify-center py-10 pb-10 gap-40">
       {!isFirstPage && (
