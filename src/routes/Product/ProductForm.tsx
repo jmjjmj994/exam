@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { BookingsType, LocationType } from 'src/api/validation/venue-schema';
-
 import { ProductCalendar } from './ProdutCalendar';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
