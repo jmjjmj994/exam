@@ -21,7 +21,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { isDirty },
   } = useForm({
     defaultValues: {
       avatar: {
@@ -35,7 +35,8 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
   const onSubmit = (data: unknown) => {
     if (!isDirty) {
-      console.log('Form is not dirty, no need to submit');
+      errorToast('Please add new profile details', 'bottom-right');
+
       return;
     }
 

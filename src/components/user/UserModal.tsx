@@ -45,8 +45,8 @@ export const UserModal: React.FC<UserModalProps> = ({
             <>
               <li className="flex items-center gap-4 mb-4 px-4 py-4">
                 <User aria-label="profile" size={25} />
-                <Link onClick={() => onClick.setTogglerFalse()} to={'/profile'}>
-                  My profile
+                <Link onClick={() => onClick.setTogglerFalse()} to={'/account'}>
+                  Account
                 </Link>
               </li>
               <hr />

@@ -1,4 +1,4 @@
-import { Toaster, ToastBar } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 export const ToasterProvider = () => (
   <Toaster

@@ -11,7 +11,7 @@ export const Account = () => {
   }
 
   return (
-    <section className="h-full w-full flex flex-col  items-center gap-10">
+    <section className="h-full w-full flex flex-col  items-center gap-10 py-2">
       <Helmet>
         <title>Holidaze | Account</title>
       </Helmet>

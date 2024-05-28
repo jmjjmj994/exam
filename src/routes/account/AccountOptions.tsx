@@ -1,27 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Lock } from 'phosphor-react';
-import { userActionsCard, manageVenuesCard } from './accountActions';
+import { Lock, Calendar, User } from 'phosphor-react';
+import { manageVenuesCard } from './accountActions';
 type AccountOptionProps = { venueManager: boolean; name: string };
 type VenueManagerActionsProp = { venueManager: boolean; name: string };
-const RegisteredUserActions = () => {
-  return (
-    <>
-      {userActionsCard.map(({ id, path, icon, title, content }) => (
-        <Link key={id} to={path}>
-          <article
-            className={`flex flex-col justify-between gap-2 px-3 py-5 h-[10rem] rounded-md border  bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors `}
-          >
-            {icon}
-            <div>
-              <p>{title}</p>
-              <p>{content}</p>
-            </div>
-          </article>
-        </Link>
-      ))}
-    </>
-  );
-};
 
 const VenueManagerActions: React.FC<VenueManagerActionsProp> = ({
   venueManager,
@@ -56,7 +37,29 @@ export const AccountOptions: React.FC<AccountOptionProps> = ({
 }) => {
   return (
     <section className="flex flex-wrap gap-[20px]">
-      <RegisteredUserActions />
+      <Link to={'/profile'}>
+        <article
+          className={`flex flex-col justify-between gap-2 px-3 py-5 h-[10rem] rounded-md border  bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors `}
+        >
+          <User size={25} />
+          <div>
+            <p>Profile</p>
+            <p>View and manage your profile details</p>
+          </div>
+        </article>
+      </Link>
+
+      <Link to={`/manage-bookings/${name}`}>
+        <article
+          className={`flex flex-col justify-between gap-2 px-3 py-5 h-[10rem] rounded-md border  bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors `}
+        >
+          <Calendar size={25} />
+          <div>
+            <p>View upcoming bookings</p>
+            <p>View and manage your upcoming bookings</p>
+          </div>
+        </article>
+      </Link>
       <VenueManagerActions venueManager={venueManager} name={name} />
     </section>
   );

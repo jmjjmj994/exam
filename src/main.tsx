@@ -8,6 +8,7 @@ import { Login } from './routes/authentication/login/Login';
 import { Product } from './routes/product/Product';
 import { Account } from './routes/account/Account';
 import { Profile } from './routes/profile/Profile';
+import { Bookings } from './routes/bookings/Bookings';
 import { CreateVenue } from './routes/create-venue/CreateVenue';
 import { UserManagement } from './routes/user-management/UserManagement';
 import { UpdateVenue } from './routes/update-venue/UpdateVenue';
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/manage-venues/:name',
         element: <UserManagement />,
+      },
+      {
+        path: '/manage-bookings/:name',
+        element: <Bookings />,
       },
       {
         path: '/update-venue/:id',
