@@ -9,7 +9,7 @@ import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const App = () => {
   const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();
   const { data, isLoading, error } = useFetchVenues(1);
-
+console.log(fetcherLoading)
   useEffect(() => {
     getData()
 
@@ -30,7 +30,7 @@ export const App = () => {
       </Helmet>
 
       <div className={styles.app_grid}>
-        {isLoading &&
+        {(isLoading && fetcherLoading) &&
           Array.from({ length: 30 }).map((_, index) => (
             <VenuesSkeleton key={index} />
           ))}

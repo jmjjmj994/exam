@@ -4,6 +4,9 @@ import {
   Controller,
   UseFormRegister,
   FieldValues,
+  Field,
+  UseFieldArrayRemove,
+  SubmitHandler,
 } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { X, Plus } from 'phosphor-react';
@@ -18,6 +21,7 @@ import {
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { options } from 'src/api/config/api-options';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
+import { Key } from 'react';
 
 /* */
 
@@ -49,7 +53,7 @@ export const CreateVenueForm = () => {
     register,
     handleSubmit,
     control,
-reset,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     resolver: zodResolver(createVenueSchema),
@@ -78,7 +82,7 @@ reset,
       .then((data) => {
         console.log(data);
         successToast('Successfully created a venue', 'bottom-right');
-        reset()
+        reset();
       })
       .catch((error) => console.log(error));
   };
@@ -153,22 +157,30 @@ const FormImages = ({ fields, register, append, remove }: FieldValues) => (
     </label>
 
     <div className="flex flex-col gap-2">
-      {fields.map((field, index) => (
-        <div key={field.id} className=" flex gap-2">
-          <input
-            className="inter-light py-2 rounded-sm border w-full pl-2"
-            type="text"
-            id="media"
-            {...register(`media.${index}.url` as const)}
-            defaultValue={field.url}
-          />
-          {index !== 0 && (
-            <button className="right-0" onClick={() => remove(index)}>
-              <X size={20} />
-            </button>
-          )}
-        </div>
-      ))}
+      {fields.map(
+        (
+          field: {
+            id: Key | null | undefined;
+            url: string | number | readonly string[] | undefined;
+          },
+          index: number
+        ) => (
+          <div key={field.id} className=" flex gap-2">
+            <input
+              className="inter-light py-2 rounded-sm border w-full pl-2"
+              type="text"
+              id="media"
+              {...register(`media.${index}.url` as const)}
+              defaultValue={field.url}
+            />
+            {index !== 0 && (
+              <button className="right-0" onClick={() => remove(index)}>
+                <X size={20} />
+              </button>
+            )}
+          </div>
+        )
+      )}
 
       {fields.length < 4 && (
         <button

@@ -44,6 +44,9 @@ export const useRecursiveDataFetcher = create<FetcherState>((set) => ({
 
       if (!meta.isLastPage) {
         useRecursiveDataFetcher.getState().fetchData(currentPage + 1);
+        set(() => ({
+          fetcherLoading:true
+        }))
       } else {
         set(() => ({
           fetcherLoading: false,
