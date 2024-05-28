@@ -5,7 +5,6 @@ import { PrimaryButton } from '../buttons/PrimaryButton';
 import { SearchLocation } from './search-inputs/SearchLocation';
 import { useForm, UseFormRegister, FieldValues } from 'react-hook-form';
 import { useSearchLocation } from './api/use-search-location.hook';
-import { useFetchLocationStore } from 'src/state/apiStore';
 export type SearchFieldValuesProps = {
   register: UseFormRegister<FieldValues>;
 };
@@ -24,12 +23,8 @@ export const SearchFormMobile: React.FC<SearchFormMobileProps> = ({
     reset,
     formState: { errors },
   } = useForm<FieldValues>();
-  const { locationData, fetchDataLocation } = useFetchLocationStore();
 
-  console.log(locationData, ' anything?');
-  const onSubmit = (formData) => {
-    fetchDataLocation(formData.location);
-  };
+  const onSubmit = (formData) => {};
   return createPortal(
     <motion.section
       initial={{ y: '-100%' }}

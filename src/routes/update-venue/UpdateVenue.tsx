@@ -2,11 +2,11 @@ import { Helmet } from 'react-helmet-async';
 import { UpdateVenueForm } from './UpdateVenueForm';
 import { useFetchVenue } from 'src/api/fetch/use-fetch-venue.hook';
 import { useParams } from 'react-router-dom';
-import { VenueType } from 'src/api/validation/venue-schema';
+import { PartialVenueType } from 'src/api/validation/venue-schema';
 import { Spinner } from 'src/api/ui/Spinner';
 import { UpdatePreview } from './UpdatePreview';
 
-export const UpdateVenue: React.FC<VenueType> = () => {
+export const UpdateVenue: React.FC<PartialVenueType> = () => {
   const { id } = useParams();
   const [data, isLoading] = useFetchVenue(id);
   console.log(data);
@@ -23,7 +23,6 @@ export const UpdateVenue: React.FC<VenueType> = () => {
 
       <section className=" max-w-[50rem] w-full">
         <h1 className=" text-left w-full">Update venue</h1>
-
         <UpdatePreview media={data.media} />
         <UpdateVenueForm
           name={data.name}
