@@ -4,9 +4,6 @@ import {
   Controller,
   UseFormRegister,
   FieldValues,
-  Field,
-  UseFieldArrayRemove,
-  SubmitHandler,
 } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { X, Plus } from 'phosphor-react';

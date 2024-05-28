@@ -4,7 +4,7 @@ type Location = {
   country: string;
 };
 
-type FilterLocationProps = {
+export type FilterLocationProps = {
   location: Location;
   query: string;
 };

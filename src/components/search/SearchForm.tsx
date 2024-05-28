@@ -1,6 +1,5 @@
 import { MagnifyingGlass } from 'phosphor-react';
-import { Inputs } from '../Inputs/Inputs';
-import { useForm, UseFormRegister, FieldValues } from 'react-hook-form';
+import { useForm,  FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const SearchForm = () => {
@@ -11,12 +10,12 @@ export const SearchForm = () => {
     formState: { errors },
   } = useForm<FieldValues>();
   const navigate = useNavigate();
-  const { query, getQuery } = useRecursiveDataFetcher();
-  const onSubmit = (formData) => {
-    const queryString = new URLSearchParams(formData).toString();
-    const adaptiv = `/search?${queryString}`;
+  const { setStateQuery } = useRecursiveDataFetcher();
+  const onSubmit = (data: FieldValues) => {
+    const queryString = new URLSearchParams(data).toString();
     navigate(`/search?${queryString}`);
-    getQuery(adaptiv);
+    setStateQuery(`/search?${queryString}`);
+    reset();
   };
 
   return (

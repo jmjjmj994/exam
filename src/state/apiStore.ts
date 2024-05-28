@@ -7,8 +7,19 @@ ligger i store
 når søk
 hent fra store
  */
+type FetcherState = {
+  fetcherData: any[];
+  fetcherLoading: boolean;
+  error: string | null;
+  query: string;
+  fetchData: (currentPage: number) => Promise<void>;
+  getData: () => Promise<void>;
+  setStateQuery: (queryString: string) => void;
+  clearStateQuery: () => void;
+}
 
-export const useRecursiveDataFetcher = create((set) => ({
+
+export const useRecursiveDataFetcher = create<FetcherState>((set) => ({
   fetcherData: [],
   fetcherLoading: true,
   error: null,
@@ -34,7 +45,7 @@ export const useRecursiveDataFetcher = create((set) => ({
       if (!meta.isLastPage) {
         useRecursiveDataFetcher.getState().fetchData(currentPage + 1);
       } else {
-        set((state) => ({
+        set(() => ({
           fetcherLoading: false,
         }));
       }
@@ -50,7 +61,10 @@ export const useRecursiveDataFetcher = create((set) => ({
     fetchData(1);
   },
 
-  getQuery: (queryString) => {
+  setStateQuery: (queryString) => {
     set((state) => ({ ...state, query: queryString }));
+  },
+  clearStateQuery: () => {
+    set((state) => ({ ...state, query: '' }));
   },
 }));
