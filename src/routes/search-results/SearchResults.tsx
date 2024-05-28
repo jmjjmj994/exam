@@ -22,11 +22,10 @@ export const SearchResults = () => {
         setData(locationData);
       } else {
         navigate(`/search`);
-        const allVenues = allData(fetcherData);
-        console.log(allVenues, 'here')
-        setData(allVenues);
+        console.log('no serach');
+
+        setData(allData(fetcherData));
         clearStateQuery();
-        setData([]);
       }
     };
 

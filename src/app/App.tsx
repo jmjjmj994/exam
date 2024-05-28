@@ -2,15 +2,18 @@ import { Helmet } from 'react-helmet-async';
 import { useFetchVenues } from 'src/api/fetch/use-fetch-venues.hook';
 import { VenuesCard } from './VenuesCard';
 import { VenuesSkeleton } from './VenuesSkeleton';
+
 import styles from './styles.module.css';
 import { useEffect } from 'react';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
+import { Pagination } from 'src/components/pagination/Pagination';
 export const App = () => {
   const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();
-  const { data, isLoading} = useFetchVenues(1);
-console.log(fetcherLoading)
+  const { data, isLoading, handlePage } = useFetchVenues(1);
+  console.log(data.meta);
+
   useEffect(() => {
-    getData()
+    getData();
 
     console.log('fetching fetcher');
   }, []);
@@ -29,7 +32,8 @@ console.log(fetcherLoading)
       </Helmet>
 
       <div className={styles.app_grid}>
-        {(isLoading && fetcherLoading) &&
+        {isLoading &&
+          fetcherLoading &&
           Array.from({ length: 30 }).map((_, index) => (
             <VenuesSkeleton key={index} />
           ))}
@@ -49,6 +53,12 @@ console.log(fetcherLoading)
           )
         )}
       </div>
+      <Pagination
+        currentPage={data.meta.currentPage}
+        isFirstPage={data.meta.isFirstPage}
+        isLastPage={data.meta.isLastPage}
+        onPageChange={handlePage}
+      />
     </div>
   );
 };

@@ -2,13 +2,32 @@ type Location = {
   address: string;
   city: string;
   country: string;
-  name: string;
+  city: string | null;
+  zip: string | null;
+  continent: string | null;
+  lat: number | null;
+  lng: number | null;
 };
 
 export type FilterLocationProps = {
+  id: string;
   location: Location;
   query: string;
   name: string;
+  media: {
+    url: string;
+    alt: string;
+  }[];
+  rating: number;
+  price: number;
+  owner: {
+    email: string;
+    bio: string;
+    banner: {
+      url: string;
+      alt: string;
+    };
+  };
 };
 
 export const filterLocation = (
@@ -26,7 +45,9 @@ export const filterLocation = (
   return filterByLocation;
 };
 
-export const allData = (data, amount) => {
-  const venues = data.map(venue => venue)
-  return venues;
+export const allData = (data) => {
+  if (!Array.isArray(data) || data.length === 0) {
+    return [];
+  }
+  return data;
 };
