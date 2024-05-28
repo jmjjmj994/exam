@@ -19,7 +19,7 @@ export const Header = () => {
         isAtRoot ? 'header-l' : 'header-s'
       }  bg-custom-background_white`}
     >
-      <div className="element-wrapper bg-orange-500 flex flex-col justify-center gap-5">
+      <div className="element-wrapper  flex flex-col justify-center gap-5 py-10">
         <div className="flex  items-center justify-between">
           <div className=" max-w-[5rem] w-full flex  items-center justify-start ">
             <img
@@ -28,9 +28,7 @@ export const Header = () => {
               alt="holidaze logo"
             />
           </div>
-
           <Navbar active={active} onClick={setFalse} />
-
           <div className="w-auto md:max-w-[5rem] md:w-full flex  gap-4 md:justify-end">
             <div className="relative flex items-center">
               <User onClick={handleToggler} />

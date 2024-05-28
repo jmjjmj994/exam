@@ -7,12 +7,9 @@ import { usePaginationFetcher } from 'src/state/apiStore';
 import { useEffect } from 'react';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const App = () => {
-/*  const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();  */
-
-
-
-
+  const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();
   const { data, isLoading, error } = useFetchVenues(1);
+
   const filterData = data.data.filter(
     (venue) =>
       venue.location.address &&
@@ -26,7 +23,7 @@ export const App = () => {
         <title>Home</title>
       </Helmet>
 
-      {/*     <div className={styles.app_grid}>
+      <div className={styles.app_grid}>
         {isLoading &&
           Array.from({ length: 30 }).map((_, index) => (
             <VenuesSkeleton key={index} />
@@ -46,7 +43,7 @@ export const App = () => {
             />
           )
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

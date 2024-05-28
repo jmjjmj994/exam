@@ -214,6 +214,7 @@ body {
   grid-template-columns: auto;
   grid-template-rows: 10rem 1fr auto;
   min-height: 100vh;
+  gap: 2rem;
 }
 
 /* Spacing for elements inside header,main,footer */
