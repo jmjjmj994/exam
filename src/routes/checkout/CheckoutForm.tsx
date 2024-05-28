@@ -38,42 +38,37 @@ export const CheckoutForm = () => {
       venueId: venueId ?? '',
     });
   };
-  console.log(bookingData);
+
   return (
-    <section className="max-w-[50rem] bg-custom-background_white shadow-overlay  w-full">
-      <form onSubmit={onSubmit} className=" border border-1">
-        <fieldset>
-          <legend>Cart</legend>
-          <div className="flex items-center justify-between">
-            <img
-              loading="lazy"
-              className="max-w-[150px] max-h-[150px] rounded-md"
-              src={image}
-              alt="image of venue"
+    <section className="flex max-w-[70rem] bg-custom-background_white shadow-overlay  w-full rounded-md py-4 px-4">
+      <form onSubmit={onSubmit} className="   w-[50%]  ">
+        <fieldset className="flex flex-col  h-full">
+          <h1>ORDER SUMMARY</h1>
+          <label className="flex   w-full flex-col" htmlFor="check-in">
+            <p>Check in</p>
+            <input
+              className="inter-light py-1 rounded-sm border w-full text-center"
+              type="text"
+              defaultValue={checkInFormatted}
+              readOnly={true}
             />
-            <label className="flex flex-col" htmlFor="name">
-              Name
-              <input className="bg-none" type="text" defaultValue={name} />
-            </label>
-          </div>
+          </label>
 
-          <div className="flex flex-col gap-4  max-w-[50%]">
-            <label className="flex flex-col " htmlFor="check-in">
-              Check in
-              <input type="text" defaultValue={checkInFormatted} />
-            </label>
-
-            <label className="flex flex-col grow" htmlFor="check-out">
-              Check out
-              <input type="text" defaultValue={checkOutFormatted} />
-            </label>
-          </div>
+          <label className="flex flex-col" htmlFor="check-out">
+            Check out
+            <input
+              className="inter-light py-2 rounded-sm border w-full pl-2"
+              type="text"
+              defaultValue={checkOutFormatted}
+            />
+          </label>
+          {/*        </div> */}
 
           <div className="max-w-[50%]">
             <p>location</p>
 
             <div className="w-full flex flex-wrap gap-4">
-              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md">
+              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md inter-light py-2 rounded-sm border w-full pl-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -85,28 +80,36 @@ export const CheckoutForm = () => {
                 </svg>
                 <p> {city}</p>
               </div>
-              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md">
+              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md inter-light py-2 rounded-sm border w-full pl-2">
                 <MapPin size={20} />
                 <p> {address}</p>
               </div>
-              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md">
+              <div className="flex flex-col items-center bg-gray-100 max-w-[5rem] rounded-md text-md inter-light py-2 rounded-sm border w-full pl-2">
                 <Globe size={20} />
                 <p> {country}</p>
               </div>
             </div>
           </div>
+          <button
+            onClick={() => {
+              handleStoreData();
+              nextFormStep();
+            }}
+            className="bg-purple-500 inter-light py-2 rounded-sm border pl-2"
+          >
+            Go to payment
+          </button>
         </fieldset>
-
-        <button
-          onClick={() => {
-            handleStoreData();
-            nextFormStep();
-          }}
-          className="bg-purple-500"
-        >
-          Go to payment
-        </button>
       </form>
+      <div className="w-[50%]  relative">
+        <img
+          src="/public/Enthusiastic-pana.webp"
+          alt="celebration illustration"
+        />
+        <a className="absolute inset-0" href="https://storyset.com/people">
+          People illustrations by Storyset
+        </a>
+      </div>
     </section>
   );
 };

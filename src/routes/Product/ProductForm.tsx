@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { ProductCalendar } from './ProdutCalendar';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
-import { errorToast } from 'src/components/toast-notification/toast';
+import {
+  errorToast,
+  successToast,
+} from 'src/components/toast-notification/toast';
+import { options } from 'src/api/config/api-options';
 
 type ProductFormProps = {
   id: string;
@@ -70,11 +74,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (bookingDate.from && bookingDate.to) {
-      navigate(
-        `/checkout/${id}/${bookingDate.from.toISOString()}/${bookingDate.to.toISOString()}/${guests}/${bookingPrice}/${name}/${encodeURIComponent(
-          image
-        )}/${city}/${country}/${address}`
-      );
+      bookVenue(bookingDate.from, bookingDate.to, maxGuests, id);
+      successToast('Successfully created a venue', 'top-center');
     } else {
       errorToast('Please specify check in and check out date', 'top-center');
     }
@@ -113,4 +114,30 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   );
 
   return productForm;
+};
+
+const bookVenue = (from: Date, to: Date, guests: number, id: string) => {
+  console.log(from, to, guests, id);
+  fetch('https://v2.api.noroff.dev/holidaze/bookings', {
+    method: 'POST',
+    headers: options.headers,
+    body: JSON.stringify({
+      dateFrom: from,
+      dateTo: to,
+      guests: guests,
+      venueId: id,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
