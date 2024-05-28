@@ -41,7 +41,7 @@ export const Product = () => {
               <ProductOwner avatar={data.owner.avatar} name={data.owner.name} />
               <ProductDescription description={data.description} />
               <ProductDetails
-                bookings={data._count.bookings}
+                bookings={data._count?.bookings}
                 created={data.created}
                 maxGuests={data.maxGuests}
                 rating={data.rating}
