@@ -10,6 +10,8 @@ import { Helmet } from 'react-helmet-async';
 import './management.css';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
 import { errorToast } from 'src/components/toast-notification/toast';
+import { Link } from 'react-router-dom';
+import { Plus } from 'phosphor-react';
 
 export const UserManagement = () => {
   const [isLoading, handleIsLoading] = useApiLoader();
@@ -67,10 +69,17 @@ export const UserManagement = () => {
         <title>Holidaze | user management</title>
       </Helmet>
       <section className="w-full h-full flex flex-col gap-10 py-20">
-        <h1>Manage your venues</h1>
-        {Array.isArray(data) && data.length > 0 && (
-          <UserManagementTable data={data} />
-        )}
+        <div className="flex items-center justify-between">
+          <h1>Manage your venues</h1>
+          <Link
+            className="flex items-center gap-4 text-system-special-primary border px-1 py-1 bg-system-special-fill rounded-md"
+            to={'/create-venue'}
+          >
+            <Plus />
+            Create venue listing
+          </Link>
+        </div>
+        <UserManagementTable data={data} />
       </section>
     </div>
   );

@@ -19,7 +19,7 @@ export const Product = () => {
   const [isMobile] = useMediaMatch('1240');
 
   return (
-    <div className="relative ">
+    <div className="relative max-w-[70rem] w-full flex flex-col justify-center m-auto">
       <Helmet>
         <title>product</title>
       </Helmet>
@@ -33,7 +33,7 @@ export const Product = () => {
             <section
               className={`${
                 isMobile && 'w-full'
-              }  rounded-md px-4 py-4  w-[50%] self-start`}
+              }  x-4 py-4  flex flex-col gap-3 w-[50%] self-start bg-custom-background_white rounded-md shadow-overlay px-2 border`}
             >
               {data.owner && data.owner.avatar && data.owner.name && (
                 <ProductOwner

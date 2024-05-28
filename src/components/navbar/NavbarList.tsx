@@ -8,8 +8,7 @@ type NavbarListType = {
 
 const navbarLinks: NavbarListType = [
   { id: 1, label: 'Home', path: '/' },
-  { id: 2, label: 'Venues', path: '/venues' },
-  { id: 3, label: 'Contact', path: '/contact' },
+  { id: 2, label: 'Venues', path: '/' },
 ];
 
 export const NavbarList = () => (

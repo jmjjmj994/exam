@@ -33,7 +33,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
   console.log(media);
   const hasValidUrl = isValidUrls.some((isValid) => isValid);
   return (
-    <div className="rounded-md bg-gray-100 my-4">
+    <div className="rounded-md bg-custom-background_white my-4 py-2 shadow-overlay">
       {hasValidUrl && media.length > 2 && (
         <EmblaCarousel>
           {media.map((img, index) => (

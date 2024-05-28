@@ -3,6 +3,7 @@ import { BookingsType, LocationType } from 'src/api/validation/venue-schema';
 import { ProductCalendar } from './ProdutCalendar';
 import { PrimaryButton } from 'src/components/buttons/PrimaryButton';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';
+import { useNavigate } from 'react-router-dom';
 import {
   errorToast,
   successToast,
@@ -22,12 +23,9 @@ type ProductFormProps = {
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   id,
-  /*   name,
-  image, */
   bookings,
   price,
   maxGuests,
-  /*   location: { city, address, country }, */
 }) => {
   const pricePerDay = price;
   const [guests, setGuests] = useState(1);
@@ -39,7 +37,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     from: null,
     to: null,
   });
-  /*   const navigate = useNavigate(); */
+  const navigate = useNavigate();
   const handleBookingDates = (dates: {
     from: Date | null;
     to: Date | null;
@@ -72,10 +70,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     setGuests(e);
   };
   const onSubmit = (e: { preventDefault: () => void }) => {
+    const username = JSON.parse(localStorage.getItem('user') || '').name;
     e.preventDefault();
     if (bookingDate.from && bookingDate.to) {
       bookVenue(bookingDate.from, bookingDate.to, maxGuests, id);
       successToast('Successfully created a venue', 'bottom-right');
+      setTimeout(() => {
+        navigate(`/manage-bookings/${username}`);
+      }, 1500);
     } else {
       errorToast('Please specify check in and check out date', 'bottom-right');
     }
@@ -86,13 +88,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       <ToasterProvider />
       <form
         onSubmit={onSubmit}
-        className="flex flex-col gap-4 max-w-[35rem] w-full"
+        className="flex flex-col gap-4 max-w-[35rem] w-full bg-custom-background_white shadow-raised rounded-md pb-4 px-2 py-2"
       >
         <ProductCalendar
           handleBookingDates={handleBookingDates}
           bookings={bookings}
         />
-        <fieldset className="max-w-[100%] mb-4 border border-custom-strokeWeak rounded-md px-2 py-2">
+        <fieldset className="max-w-[100%] mb-4   rounded-md px-2 py-2">
           <legend className="font-int-bold leading-10">Guests:</legend>
           <select
             value={guests}

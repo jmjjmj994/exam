@@ -3,11 +3,35 @@ import { Eye, Star } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
 import { useDeleteVenue } from '../api/use-delete-venue.hook';
+import { options } from 'src/api/config/api-options';
 export const UserLargeTable: React.FC<UserManagementTableProps> = ({
   data,
 }) => {
-  const [responseSuccess, handleDeleteVenue] = useDeleteVenue();
-  console.log(responseSuccess);
+  /* const [responseSuccess, handleDeleteVenue] = useDeleteVenue();
+  console.log(responseSuccess); */
+  const handleDeleteVenue = async (id: string) => {
+    console.log('clicked');
+    fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`, {
+      method: 'DELETE',
+      headers: options.headers,
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`${response.statusText} error in delete-fetch.ts`);
+        }
+        if (response.status === 204) {
+          window.location.reload();
+
+          return;
+        }
+        const results = await response.json();
+        console.log(results);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <div className="overflow-x-auto h-full   py-4 px-4  rounded-md">
       <table className="user-management-table">
@@ -29,14 +53,7 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
           {data.map(({ id, name, created, updated, price, rating }) => (
             <tr key={id}>
               <td className="inter-light py-2 rounded-sm ">
-                <button
-                  onClick={() => {
-                    // @ts-expect-error due to id may be null
-                    handleDeleteVenue(id);
-                  }}
-                >
-                  Delete
-                </button>
+                <button onClick={handleDeleteVenue(id)}>Delete</button>
               </td>
               <td className="inter-light py-2">{name}</td>
               <td className="inter-light py-2">

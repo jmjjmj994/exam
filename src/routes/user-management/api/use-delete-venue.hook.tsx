@@ -9,6 +9,7 @@ export const useDeleteVenue = (): [
   const [responseSuccess, setResponseSuccess] = useState('');
   const [error, clearError, handleError] = useApiError();
   const handleDeleteVenue = async (id: string) => {
+    console.log('clicked');
     fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`, {
       method: 'DELETE',
       headers: options.headers,
