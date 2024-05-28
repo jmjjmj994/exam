@@ -16,22 +16,17 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
     representation: 'date',
   });
   return (
-    <article className="text-sm bg-orange-300">
-      <h2 className="text-xl">Venue details</h2>
-      {bookings > 30 && <p>Popular venue</p>}
+    <article className="text-sm  flex flex-col gap-2">
+      <h2 className="text-base inter-semi-bold">Details</h2>
 
-      <div>
-        <div>
-          <Calendar size={25} />
-          <p>Listed on: {formattedDate}</p>
-        </div>
-        <div>
+      <div className="flex gap-2">
+        <div className="flex flex-col items-center">
           <UsersThree size={25} />
-          <p>Max guests: {maxGuests}</p>
+          <p> {maxGuests}</p>
         </div>
-        <div>
+        <div className="flex flex-col items-center">
           <Star size={25} />
-          <p>Rating: {rating}</p>
+          <p> {rating}</p>
         </div>
       </div>
     </article>

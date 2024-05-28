@@ -1,4 +1,4 @@
-import { WifiHigh, PawPrint, Pizza, Car } from 'phosphor-react';
+import { WifiHigh, PawPrint, Pizza, Car, XCircle } from 'phosphor-react';
 
 type ProductAmenitiesProps = {
   meta: {
@@ -8,41 +8,40 @@ type ProductAmenitiesProps = {
     breakfast: boolean;
   };
 };
+
 export const ProductAmenities: React.FC<ProductAmenitiesProps> = ({
   meta: { wifi, parking, pets, breakfast },
 }) => {
   return (
-    <article className="bg-orange-200 text-sm">
-      <h4 className="text-xl">Venue amenities</h4>
-
-      {!wifi && !parking && !pets && !breakfast && (
-        <p>This venue does not offer any amenities.</p>
-      )}
-
-      {wifi && (
-        <div>
-          <WifiHigh size={25} />
-          <p>Wifi access available</p>
-        </div>
-      )}
-      {pets && (
-        <div>
-          <PawPrint size={25} />
-          <p>Pets allowed</p>
-        </div>
-      )}
-      {parking && (
-        <div>
-          <Pizza size={25} />
-          <p>Breakfast included</p>
-        </div>
-      )}
-      {breakfast && (
-        <div>
-          <Car size={25} />
-          <p>On-site parking available</p>
-        </div>
-      )}
+    <article className=" text-sm flex flex-col gap-2">
+      <h4 className="text-base inter-semi-bold">Venue amenities</h4>
+      {!wifi && !parking && !pets && !breakfast && null}
+      <div className="flex gap-4">
+        {wifi && (
+          <div className="flex items-center flex-col">
+            <WifiHigh size={25} />
+            <p>Wifi</p>
+          </div>
+        )}
+        {pets && (
+          <div className="flex items-center flex-col">
+            <PawPrint size={25} />
+            <p>Pets</p>
+          </div>
+        )}
+        {parking && (
+          <div className="flex items-center flex-col">
+            <Pizza size={25} />
+            <p>Breakfast</p>
+          </div>
+        )}
+        {breakfast && (
+          <div className="flex items-center flex-col">
+            <Car size={25} />
+            <p>Parking</p>
+          </div>
+        )}
+      </div>
     </article>
   );
 };

@@ -37,7 +37,11 @@ export const Product = () => {
               isMobile && 'flex-col py-10'
             } flex items-center gap-4`}
           >
-            <section className={`${isMobile && 'w-full'} bg-red-300 w-[50%]`}>
+            <section
+              className={`${
+                isMobile && 'w-full'
+              } bg-custom-background_white shadow-overlay rounded-md px-4 py-4 border w-[50%] self-start`}
+            >
               <ProductOwner avatar={data.owner.avatar} name={data.owner.name} />
               <ProductDescription description={data.description} />
               <ProductDetails
@@ -60,7 +64,6 @@ export const Product = () => {
               name={data.name}
               image={data.media[0].url}
               location={data.location}
-
             />
 
             <button

@@ -137,21 +137,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             ))}
           </select>
         </fieldset>
-        {/*   <article className="border border-custom-strokeWeak rounded-md px-2 py-2 ">
-          <p>Pricing breakdown</p>
-          <span className="inline-flex w-full justify-between border-b-1">
-            Price per night <span>${price}</span>
-          </span>
-          <span className="inline-flex w-full justify-between border-b-1">
-            Cleaning fee <span>$0.00</span>
-          </span>
-          <span className="inline-flex w-full justify-between border-b-1">
-            Holidaze service fee <span>$0.00</span>
-          </span>
-          <span className="inline-flex w-full justify-between border-b-1">
-            Total after taxes <span>$0.00</span>
-          </span>
-        </article> */}
         <PrimaryButton width="auto" type="submit">
           Confirm order
         </PrimaryButton>

@@ -47,8 +47,6 @@ export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
         </EmblaCarousel>
       )}
 
-
-
       {media.length === 1 && hasValidUrl && (
         <>
           {media.map((img, index) => (
