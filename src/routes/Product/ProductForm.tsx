@@ -76,9 +76,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     e.preventDefault();
     if (bookingDate.from && bookingDate.to) {
       bookVenue(bookingDate.from, bookingDate.to, maxGuests, id);
-      successToast('Successfully created a venue', 'top-center');
+      successToast('Successfully created a venue', 'bottom-right');
     } else {
-      errorToast('Please specify check in and check out date', 'top-center');
+      errorToast('Please specify check in and check out date', 'bottom-right');
     }
   };
 

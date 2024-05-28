@@ -61,7 +61,7 @@ export const ProductImage: React.FC<ProductImageProps> = ({ media }) => {
 
       {!hasValidUrl && (
         <img
-          src="/public/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.avif"
+          src="/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.avif"
           alt="Default image"
           className="object-cover w-full aspect-auto max-w-[800px] max-h-[500px] rounded-md bg-custom-background_white shadow-overlay p-1 m-auto"
         />
