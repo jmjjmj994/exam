@@ -9,7 +9,7 @@ export const createVenueSchema = z.object({
     .max(200, 'maximum number of characters are 200'),
   media: z.array(
     z.object({
-      url: validUrlSchema,
+      url: z.string(),
       alt: z.string().optional(),
     })
   ),

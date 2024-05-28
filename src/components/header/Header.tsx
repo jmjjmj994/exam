@@ -22,11 +22,7 @@ export const Header = () => {
       <div className="element-wrapper  flex flex-col justify-center gap-5 py-10">
         <div className="flex  items-center justify-between">
           <div className=" max-w-[5rem] w-full flex  items-center justify-start ">
-            <img
-              className=""
-              src="/holidaze-logo.svg"
-              alt="holidaze logo"
-            />
+            <img className="" src="/holidaze-logo.svg" alt="holidaze logo" />
           </div>
           <Navbar active={active} onClick={setFalse} />
           <div className="w-auto md:max-w-[5rem] md:w-full flex  gap-4 md:justify-end">
@@ -45,7 +41,7 @@ export const Header = () => {
             <HamburgerButton onClick={setTrue} />
           </div>
         </div>
-        <SearchBar />
+        {isAtRoot && <SearchBar />}
       </div>
     </header>
   );

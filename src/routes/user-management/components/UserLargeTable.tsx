@@ -53,7 +53,7 @@ export const UserLargeTable: React.FC<UserManagementTableProps> = ({
           {data.map(({ id, name, created, updated, price, rating }) => (
             <tr key={id}>
               <td className="inter-light py-2 rounded-sm ">
-                <button onClick={handleDeleteVenue(id)}>Delete</button>
+                <button onClick={() => handleDeleteVenue(id)}>Delete</button>
               </td>
               <td className="inter-light py-2">{name}</td>
               <td className="inter-light py-2">

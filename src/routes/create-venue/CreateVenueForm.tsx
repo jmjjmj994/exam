@@ -133,14 +133,14 @@ export const CreateVenueForm = () => {
   );
 };
 
-const FormImages = ({ fields, register, append, remove }: FieldValues) => (
+const FormImages = ({ fields, register }: FieldValues) => (
   <div>
     <label className="flex items-center gap-2" htmlFor="media">
       Add an image for your venue
       <span className="text-xs">(required) </span>
     </label>
 
-    <div className="flex flex-col gap-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2  gap-3">
       {fields.map(
         (
           field: {
@@ -157,22 +157,8 @@ const FormImages = ({ fields, register, append, remove }: FieldValues) => (
               {...register(`media.${index}.url` as const)}
               defaultValue={field.url}
             />
-            {index !== 0 && (
-              <button className="right-0" onClick={() => remove(index)}>
-                <X size={20} />
-              </button>
-            )}
           </div>
         )
-      )}
-
-      {fields.length < 4 && (
-        <button
-          className="w-auto self-start"
-          onClick={() => append({ url: '', alt: 'image of venue' })}
-        >
-          <Plus />
-        </button>
       )}
     </div>
   </div>

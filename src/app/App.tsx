@@ -53,12 +53,15 @@ export const App = () => {
           )
         )}
       </div>
-      <Pagination
-        currentPage={data.meta.currentPage}
-        isFirstPage={data.meta.isFirstPage}
-        isLastPage={data.meta.isLastPage}
-        onPageChange={handlePage}
-      />
+
+      {!isLoading && (
+        <Pagination
+          currentPage={data.meta.currentPage}
+          isFirstPage={data.meta.isFirstPage}
+          isLastPage={data.meta.isLastPage}
+          onPageChange={handlePage}
+        />
+      )}
     </div>
   );
 };

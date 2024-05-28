@@ -22,8 +22,6 @@ export const SearchResults = () => {
         setData(locationData);
       } else {
         navigate(`/search`);
-        console.log('no serach');
-
         setData(allData(fetcherData));
         clearStateQuery();
       }
@@ -31,7 +29,8 @@ export const SearchResults = () => {
 
     filterLocationData();
   }, [query]);
-  console.log(data);
+
+ 
   return (
     <div className={styles.search_grid}>
       {data.map(({ id, name, media, location, rating, price, owner }) => (

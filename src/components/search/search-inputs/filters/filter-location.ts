@@ -2,11 +2,10 @@ type Location = {
   address: string;
   city: string;
   country: string;
-  city: string | null;
-  zip: string | null;
-  continent: string | null;
-  lat: number | null;
-  lng: number | null;
+  zip: string;
+  continent: string;
+  lat: number;
+  lng: number;
 };
 
 export type FilterLocationProps = {

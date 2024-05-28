@@ -70,6 +70,7 @@ export const UserManagement = () => {
       </Helmet>
       <section className="w-full h-full flex flex-col gap-10 py-20">
         <div className="flex items-center justify-between">
+          <Link to={'/account'}>Go back</Link>
           <h1>Manage your venues</h1>
           <Link
             className="flex items-center gap-4 text-system-special-primary border px-1 py-1 bg-system-special-fill rounded-md"

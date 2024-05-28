@@ -58,7 +58,7 @@ export const Product = () => {
               price={data.price}
               maxGuests={data.maxGuests}
               name={data.name}
-              image={data.media[0].url}
+              image={data?.media[0]?.url}
               location={data.location}
             />
           </section>
