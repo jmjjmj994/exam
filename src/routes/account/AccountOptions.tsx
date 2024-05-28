@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom';
 import { Lock } from 'phosphor-react';
-
-import { userActionsCard, manageVenuesCard } from './userActions';
-
-type ProfileOptionsProp = { venueManager: boolean; name: string };
+import { userActionsCard, manageVenuesCard } from './accountActions';
+type AccountOptionProps = { venueManager: boolean; name: string };
 type VenueManagerActionsProp = { venueManager: boolean; name: string };
 const RegisteredUserActions = () => {
   return (
     <>
       {userActionsCard.map(({ id, path, icon, title, content }) => (
         <Link key={id} to={path}>
-          <article className="flex flex-col gap-2 px-3 py-8 rounded-sm bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors">
+          <article
+            className={`flex flex-col justify-between gap-2 px-3 py-5 h-[10rem] rounded-md border  bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors `}
+          >
             {icon}
-            <p>{title}</p>
-            <p>{content}</p>
+            <div>
+              <p>{title}</p>
+              <p>{content}</p>
+            </div>
           </article>
         </Link>
       ))}
@@ -37,21 +39,23 @@ const VenueManagerActions: React.FC<VenueManagerActionsProp> = ({
           <Lock className="text-gray-500" size={80} />
         </div>
       )}
-      <article className="flex flex-col gap-2 px-3 py-8 rounded-sm bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors">
+      <article className="flex flex-col justify-between gap-2 px-3 py-5 h-[10rem] rounded-md border bg-custom-background_white shadow-overlay hover:bg-gray-100 transition-colors col-3">
         {manageVenuesCard.icon}
-        <p>{manageVenuesCard.title}</p>
-        <p>{manageVenuesCard.content}</p>
+        <div>
+          <p>{manageVenuesCard.title}</p>
+          <p>{manageVenuesCard.content}</p>
+        </div>
       </article>
     </Link>
   );
 };
 
-export const ProfileOptions: React.FC<ProfileOptionsProp> = ({
+export const AccountOptions: React.FC<AccountOptionProps> = ({
   venueManager,
   name,
 }) => {
   return (
-    <section className=" flex flex-wrap gap-4 ">
+    <section className="flex flex-wrap gap-[20px]">
       <RegisteredUserActions />
       <VenueManagerActions venueManager={venueManager} name={name} />
     </section>

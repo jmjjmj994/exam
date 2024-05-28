@@ -249,7 +249,7 @@ body {
   .header-s,
   .main-s,
   .footer-s {
-    grid-template-columns: 12rem 1fr 12rem;
+    grid-template-columns: 9rem 1fr 9rem;
   }
 }
 /* small space */

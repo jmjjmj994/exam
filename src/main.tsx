@@ -6,7 +6,8 @@ import { App } from './app/App';
 import { Register } from './routes/authentication/register/Register';
 import { Login } from './routes/authentication/login/Login';
 import { Product } from './routes/product/Product';
-import { Profile } from './routes/Profile/Profile';
+import { Account } from './routes/account/Account';
+import { Profile } from './routes/profile/Profile';
 import { CreateVenue } from './routes/create-venue/CreateVenue';
 import { UserManagement } from './routes/user-management/UserManagement';
 import { UpdateVenue } from './routes/update-venue/UpdateVenue';
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <Product />,
       },
 
+      {
+        path: '/account',
+        element: <Account />,
+      },
       {
         path: '/profile',
         element: <Profile />,

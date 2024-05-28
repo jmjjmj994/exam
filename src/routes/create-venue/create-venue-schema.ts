@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { validUrlSchema } from '../Profile/profile-update-schema';
+import { validUrlSchema } from '../profile/profile-update-schema';
 const castToNum = z.preprocess((val) => Number(val), z.number().default(1));
 export const createVenueSchema = z.object({
   name: z.string().min(5).max(30, 'maximal numbers of characters are 30'),

@@ -1,8 +1,8 @@
+import { ProfileForm } from './ProfileForm';
+
 type ProfileCardProps = {
-  active: boolean;
   name: string;
   email: string;
-
   avatar: {
     url: string;
     alt: string;
@@ -13,9 +13,8 @@ type ProfileCardProps = {
     bookings: number;
   };
 };
-import { ProfileForm } from './ProfileForm';
 
-export const ProfileCard: React.FC<ProfileCardProps> = ({
+export const ProfileUserCard: React.FC<ProfileCardProps> = ({
   name,
   email,
   avatar: { url, alt },
@@ -23,9 +22,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   _count,
 }) => {
   return (
-    <section className="flex flex-col md:flex-row gap-2">
+    <section className="flex flex-col profile">
       <article
-        className={` md:max-w-[20rem] w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay`}
+        className={`  w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay `}
       >
         <div className="flex justify-between">
           <img
@@ -51,6 +50,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
           <p>Venues: {_count.venues}</p>
         </div>
       </article>
+
       <ProfileForm
         url={url}
         alt={alt}

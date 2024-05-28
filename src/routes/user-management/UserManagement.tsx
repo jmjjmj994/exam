@@ -62,7 +62,6 @@ export const UserManagement = () => {
       </Helmet>
       <section className="w-full h-full flex flex-col gap-10 py-20">
         <h1>Manage your venues</h1>
-
         <UserManagementTable data={data} />
       </section>
     </div>
