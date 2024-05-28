@@ -22,6 +22,7 @@ export const SearchResults = () => {
         setData(locationData);
       } else {
         navigate(`/search`);
+        //@ts-expect-error
         setData(allData(fetcherData));
         clearStateQuery();
       }
@@ -30,7 +31,6 @@ export const SearchResults = () => {
     filterLocationData();
   }, [query]);
 
- 
   return (
     <div className={styles.search_grid}>
       {data.map(({ id, name, media, location, rating, price, owner }) => (
