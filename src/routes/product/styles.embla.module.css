@@ -1,0 +1,21 @@
+.embla {
+    width: 100%;
+    overflow: hidden;
+   
+  }
+  .embla__container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .embla_slide {
+    flex: 0 0 75%;
+    min-width: 0;
+    max-width: 100%;
+    object-fit: cover;
+    aspect-ratio: square;
+    margin-inline-end: 20px;
+    margin-inline-start: 10px;
+    max-height: 30rem;
+  }
