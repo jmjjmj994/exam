@@ -7,19 +7,19 @@ import { usePaginationFetcher } from 'src/state/apiStore';
 import { useEffect } from 'react';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const App = () => {
-  const { data, isLoading, getData } = useRecursiveDataFetcher();
-  useEffect(() => {
-    getData();
-  }, []);
-  console.log(data);
-  /*  const { data, isLoading, error } = useFetchVenues(1);
+/*  const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();  */
+
+
+
+
+  const { data, isLoading, error } = useFetchVenues(1);
   const filterData = data.data.filter(
     (venue) =>
       venue.location.address &&
       venue.location.city &&
       venue.location.country &&
       venue.name.length < 30
-  ); */
+  );
   return (
     <div>
       <Helmet>

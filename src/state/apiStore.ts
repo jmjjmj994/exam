@@ -9,11 +9,11 @@ hent fra store
  */
 
 export const useRecursiveDataFetcher = create((set) => ({
-  data: [],
-  isLoading: true,
+  fetcherData: [],
+  fetcherLoading: true,
   error: null,
 
-  fetchData: async (currentPage:number) => {
+  fetchData: async (currentPage: number) => {
     try {
       const response = await fetch(
         `https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true&page=${currentPage}`,
@@ -23,19 +23,18 @@ export const useRecursiveDataFetcher = create((set) => ({
       );
       if (!response.ok)
         throw new Error(`${response.statusText}: error in recursive fetcher`);
-       
 
-const {data, meta} = await response.json()
+      const { data, meta } = await response.json();
 
       set((state) => ({
-        data: [...state.data, ...data],
+        fetcherData: [...state.fetcherData, ...data],
       }));
 
-      if(!meta.isLastPage) {
-        useRecursiveDataFetcher.getState().fetchData(currentPage + 1)
+      if (!meta.isLastPage) {
+        useRecursiveDataFetcher.getState().fetchData(currentPage + 1);
       } else {
         set((state) => ({
-          isLoading: false,
+          fetcherLoading: false,
         }));
       }
     } catch (error) {
