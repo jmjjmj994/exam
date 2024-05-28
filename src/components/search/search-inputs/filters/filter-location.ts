@@ -44,7 +44,7 @@ export const filterLocation = (
   return filterByLocation;
 };
 
-export const allData = (data) => {
+export const allData = (data:FilterLocationProps) => {
   if (!Array.isArray(data) || data.length === 0) {
     return [];
   }

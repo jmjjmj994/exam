@@ -5,7 +5,7 @@ import {
   FieldValues,
 } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { X, Plus } from 'phosphor-react';
+
 import { Inputs } from 'src/components/Inputs/Inputs';
 import { createVenueSchema } from './create-venue-schema';
 import { ToasterProvider } from 'src/components/toast-notification/Toaster';

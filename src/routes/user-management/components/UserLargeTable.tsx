@@ -2,7 +2,6 @@ import { formatISO } from 'date-fns';
 import { Eye, Star } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { UserManagementTableProps } from '../UserManagementTable';
-import { useDeleteVenue } from '../api/use-delete-venue.hook';
 import { options } from 'src/api/config/api-options';
 export const UserLargeTable: React.FC<UserManagementTableProps> = ({
   data,
