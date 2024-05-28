@@ -65,34 +65,3 @@ export const useRecursiveDataFetcher = create<FetcherState>((set) => ({
   },
 }));
 
-type DataStoreState = {
-  data: any[];
-  loading: boolean;
-  error: string | null;
-  fetchData: () => Promise<void>;
-};
-
-// Create the new store
-export const useDataStore = create<DataStoreState>((set) => ({
-  data: [],
-  loading: true,
-  error: null,
-
-  fetchData: async () => {
-    try {
-      const response = await fetch(
-        'https://v2.api.noroff.dev/holidaze/venues/?_owner=true&_bookings=true'
-      );
-      if (!response.ok)
-        throw new Error(`${response.statusText}: error in data fetcher`);
-
-      const { data } = await response.json();
-
-      // Set the data in the store
-      set({ data, loading: false });
-    } catch (error) {
-      set({ error: error.message, loading: false });
-      console.log(error);
-    }
-  },
-}));
