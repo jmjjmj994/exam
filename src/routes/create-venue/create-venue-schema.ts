@@ -1,5 +1,4 @@
 import { z } from 'zod';
-
 import { validUrlSchema } from '../profile/profile-update-schema';
 const castToNum = z.preprocess((val) => Number(val), z.number().default(1));
 export const createVenueSchema = z.object({
