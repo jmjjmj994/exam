@@ -8,7 +8,6 @@ export const CheckoutForm = () => {
     dateStart,
     dateEnd,
     visitors,
-    price,
     image,
     name,
     city,

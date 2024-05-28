@@ -18,7 +18,7 @@ export const Product = () => {
   const [data, isLoading] = useFetchVenue(id);
   const isData = Object.values(data).length > 0;
   const [active, setFalse, setTrue] = useBoolean();
-  const [isMobile] = useMediaMatch('768');
+  const [isMobile] = useMediaMatch('1240');
   console.log(data);
   useEffect(() => {
     if (!isMobile) setFalse();
@@ -33,14 +33,12 @@ export const Product = () => {
         <>
           <ProductImage media={data.media} />
           <section
-            className={`${
-              isMobile && 'flex-col py-10'
-            } flex items-center gap-4`}
+            className={`${isMobile && 'flex-col '} flex justify-between gap-4`}
           >
             <section
               className={`${
                 isMobile && 'w-full'
-              } bg-custom-background_white shadow-overlay rounded-md px-4 py-4 border w-[50%] self-start`}
+              }  rounded-md px-4 py-4  w-[50%] self-start`}
             >
               <ProductOwner avatar={data.owner.avatar} name={data.owner.name} />
               <ProductDescription description={data.description} />
@@ -65,15 +63,6 @@ export const Product = () => {
               image={data.media[0].url}
               location={data.location}
             />
-
-            <button
-              onClick={setTrue}
-              className={`${
-                isMobile ? 'block' : 'hidden'
-              } bg-custom-primary text-white w-full py-4 rounded-sm`}
-            >
-              Book
-            </button>
           </section>
         </>
       )}
