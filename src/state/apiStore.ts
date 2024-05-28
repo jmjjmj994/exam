@@ -12,6 +12,7 @@ export const useRecursiveDataFetcher = create((set) => ({
   fetcherData: [],
   fetcherLoading: true,
   error: null,
+  query: '',
 
   fetchData: async (currentPage: number) => {
     try {
@@ -47,5 +48,9 @@ export const useRecursiveDataFetcher = create((set) => ({
   getData: async () => {
     const { fetchData } = useRecursiveDataFetcher.getState();
     fetchData(1);
+  },
+
+  getQuery: (queryString) => {
+    set((state) => ({ ...state, query: queryString }));
   },
 }));

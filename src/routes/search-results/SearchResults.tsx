@@ -2,23 +2,26 @@ import { useEffect, useState } from 'react';
 import { filterLocation } from 'src/components/search/search-inputs/filters/filter-location';
 import { useRecursiveDataFetcher } from 'src/state/apiStore';
 export const SearchResults = () => {
-  const { fetcherData } = useRecursiveDataFetcher();
-  const [query, setQuery] = useState(
-    new URLSearchParams(window.location.search)
-  );
+  const { query, fetcherData } = useRecursiveDataFetcher();
   const [data, setData] = useState([]);
+  const searchParams = new URLSearchParams(query);
 
   useEffect(() => {
+    const location = query.split('=')[1];
+
     const filterLocationData = () => {
-      const filteredData = [];
-      for (const [key, value] of query.entries()) {
-        const locationData = filterLocation(fetcherData, value);
-        filteredData.push(...locationData);
+      if (location) {
+        console.log('user is searching');
+        const locationData = filterLocation(fetcherData, location);
+        setData(locationData);
+      } else {
+        console.log('user is not searching');
+        setData([]); 
       }
-      return filteredData;
     };
-    const locationData = filterLocationData();
-    setData(locationData);
+
+    filterLocationData();
+    
   }, [query]);
 console.log(data)
   return <div>Search container</div>;
