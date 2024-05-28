@@ -24,7 +24,7 @@ export const Header = () => {
           <div className=" max-w-[5rem] w-full flex  items-center justify-start ">
             <img
               className=""
-              src="/public/holidaze-logo.svg"
+              src="public/holidaze-logo.svg"
               alt="holidaze logo"
             />
           </div>
