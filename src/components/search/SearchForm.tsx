@@ -9,12 +9,12 @@ export const SearchForm = () => {
     reset,
     formState: { errors },
   } = useForm<FieldValues>();
-
+const navigate = useNavigate()
   const onSubmit = (formData) => {
-    /*   const queryString = new URLSearchParams(formData).toString()
+      const queryString = new URLSearchParams(formData).toString()
     console.log(queryString)
     navigate(`/search?${queryString}`)
-    console.log('clicked') */
+    console.log('clicked') 
     console.log(formData);
   };
 
@@ -35,6 +35,7 @@ export const SearchForm = () => {
           id="search"
           placeholder="Search"
           className="inter-light py-2 rounded-sm border-r border-t border-b w-full pl-2"
+          {...register('location')}
         />
       </div>
     </form>

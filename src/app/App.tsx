@@ -10,6 +10,12 @@ export const App = () => {
   const { fetcherData, fetcherLoading, getData } = useRecursiveDataFetcher();
   const { data, isLoading, error } = useFetchVenues(1);
 
+  useEffect(() => {
+    getData()
+
+    console.log('fetching fetcher');
+  }, []);
+  console.log(fetcherData);
   const filterData = data.data.filter(
     (venue) =>
       venue.location.address &&
