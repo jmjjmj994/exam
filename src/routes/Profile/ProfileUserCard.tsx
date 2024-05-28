@@ -16,38 +16,34 @@ type ProfileCardProps = {
 
 export const ProfileUserCard: React.FC<ProfileCardProps> = ({
   name,
-  email,
   avatar: { url, alt },
   venueManager,
-  _count,
 }) => {
   return (
-    <section className="flex flex-col profile">
+    <section className="flex bg-custom-background_white border rounded-md shadow-overlay px-4 py-4">
       <article
-        className={`  w-full flex flex-col gap-4 px-2 py-2 rounded-sm  bg-custom-background_white shadow-overlay `}
+        className={`  w-full flex flex-col gap-4  rounded-sm items-start`}
       >
-        <div className="flex justify-between">
+        <div className="flex flex-col">
           <img
             className="w-[100px] h-[100px] object-cover aspect-auto rounded-full"
             src={url}
             alt={alt}
           />
+        </div>
+        <div>
           <p>{name}</p>
         </div>
         <div>
-          <p>Email address</p>
-          <p>{email}</p>
-        </div>
-
-        <div>
-          <p>Role</p>
-          {venueManager ? <p>Venue manager</p> : <p>User</p>}
-        </div>
-
-        <div>
-          Statistics
-          <p>Bookings: {_count.bookings}</p>
-          <p>Venues: {_count.venues}</p>
+          {venueManager ? (
+            <div className="flex items-center inter-light gap-4 text-system-special-primary border px-1 py-1 bg-system-special-fill rounded-md">
+              <span className="text-sm">Venue manager</span>
+            </div>
+          ) : (
+            <div className="flex items-center inter-light gap-4 text-system-special-primary border px-1 py-1 bg-system-special-fill rounded-md">
+              <span className="text-sm">Regular user</span>
+            </div>
+          )}
         </div>
       </article>
 
